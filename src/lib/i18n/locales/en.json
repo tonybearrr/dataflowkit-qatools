@@ -1,0 +1,135 @@
+{
+	"common": {
+		"qaToolbox": "QA Toolbox",
+		"madeBy": "Made by Anton",
+		"donate": "Donate",
+		"privacy": "Privacy Policy",
+		"about": "About",
+		"privacyFirst": "Runs locally in your browser. No tracking. No accounts.",
+		"noTracking": "No tracking",
+		"localOnly": "Local-only",
+		"builtBy": "Part of",
+		"moreToolsComing": "More tools coming soon...",
+		"copy": "Copy",
+		"clear": "Clear",
+		"parse": "Parse"
+	},
+	"nav": {
+		"testDataGenerator": "Test Data",
+		"apiResponseValidator": "API Validator",
+		"statusCodeReference": "Status Codes",
+		"userAgentParser": "User Agent",
+		"cookieInspector": "Cookies",
+		"headerInspector": "Headers",
+		"testCaseBuilder": "Test Cases"
+	},
+	"home": {
+		"title": "QA Toolbox",
+		"description": "Fast, privacy-first tools for QA testing. No backend. No tracking. Everything runs locally in your browser.",
+		"testDataGenerator": {
+			"title": "Test Data Generator",
+			"description": "Generate test data: emails, phone numbers, UUIDs, names, addresses, and more.",
+			"tags": ["Email", "Phone", "UUID"]
+		},
+		"apiResponseValidator": {
+			"title": "API Response Validator",
+			"description": "Validate JSON responses against schemas. Check structure, types, and required fields.",
+			"tags": ["JSON Schema", "Validation", "API"]
+		},
+		"statusCodeReference": {
+			"title": "Status Code Reference",
+			"description": "Quick reference for HTTP status codes with descriptions and use cases.",
+			"tags": ["HTTP", "Status", "Reference"]
+		},
+		"userAgentParser": {
+			"title": "User Agent Parser",
+			"description": "Parse User-Agent strings to extract browser, OS, device, and version information.",
+			"tags": ["Browser", "OS", "Device"]
+		},
+		"cookieInspector": {
+			"title": "Cookie Inspector",
+			"description": "Analyze and edit cookies. View attributes, expiration, and domain settings.",
+			"tags": ["Cookies", "Session", "Storage"]
+		},
+		"headerInspector": {
+			"title": "Header Inspector",
+			"description": "Inspect HTTP headers. Parse, analyze, and understand request/response headers.",
+			"tags": ["HTTP", "Headers", "Request"]
+		},
+		"testCaseBuilder": {
+			"title": "Test Case Builder",
+			"description": "Build structured test cases with steps, expected results, and test data.",
+			"tags": ["Test Cases", "QA", "Structure"]
+		}
+	},
+	"testDataGenerator": {
+		"title": "Test Data Generator - QA Toolbox",
+		"description": "Generate test data locally: emails, phone numbers, UUIDs, names, addresses, and more. No data sent to servers.",
+		"heading": "Test Data Generator",
+		"subtitle": "Test Data Generator is a local tool for generating test data without a backend. Define a data schema, preview generated records, and export them to JSON or CSV for testing, APIs, and development.",
+		"whatIsTestData": "What is Test Data Generation?",
+		"testDataDescription": "Test data generation is the process of creating realistic, structured data for testing purposes. This tool allows you to define a schema with different field types (strings, numbers, dates, emails, etc.) and generate multiple rows of data that match your requirements.",
+		"parameters": "Parameters",
+		"presets": "Presets",
+		"presetsDescription": "Predefined schemas for quick start:",
+		"presetsList": "User, Order, Address, Event",
+		"fields": "Fields",
+		"fieldName": "Field name — key name in the output",
+		"fieldType": "Type — data type (uuid, email, name, phone, address, date, string)",
+		"fieldRequired": "Required — ensures the field is always present",
+		"fieldManage": "Reorder / Duplicate / Remove — manage field structure",
+		"preview": "Preview",
+		"previewDescription": "Displays generated data in table form",
+		"previewRegenerate": "Regenerate creates a new dataset with the same schema",
+		"export": "Export",
+		"exportRows": "Rows — number of records to generate",
+		"exportSeed": "Seed — fixed value for reproducible results",
+		"exportFormat": "Format — JSON or CSV",
+		"exportArrayKey": "Array key (optional) — wraps output array in an object",
+		"exportActions": "Copy / Download — copy data or download file",
+		"features": "Features",
+		"featureSchema": "Define custom schemas with multiple field types",
+		"featureSeed": "Use seeds for reproducible, deterministic data",
+		"featureExport": "Export to JSON or CSV formats",
+		"featureLocal": "All processing happens locally in your browser",
+		"useCases": "Use Cases",
+		"useCase1": "Creating test datasets for API testing",
+		"useCase2": "Generating sample data for database seeding",
+		"useCase3": "Building mock data for frontend development",
+		"useCase4": "Creating test fixtures for automated testing",
+		"privacy": "Privacy",
+		"privacyText": "All data is generated locally in your browser. No data is sent to any server.",
+		"confirmReplaceTitle": "Replace Schema?",
+		"confirmReplaceMessage": "This will replace your current schema. Continue?",
+		"confirmCancel": "Cancel",
+		"confirmContinue": "Continue"
+	},
+	"apiResponseValidator": {
+		"title": "API Response Validator - QA Toolbox",
+		"description": "Validate JSON responses against schemas locally. Check structure, types, and required fields. No data sent to servers."
+	},
+	"statusCodeReference": {
+		"title": "Status Code Reference - QA Toolbox",
+		"description": "Quick reference for HTTP status codes with descriptions and use cases."
+	},
+	"userAgentParser": {
+		"title": "User Agent Parser - QA Toolbox",
+		"description": "Parse User-Agent strings to extract browser, OS, device, and version information locally."
+	},
+	"cookieInspector": {
+		"title": "Cookie Inspector - QA Toolbox",
+		"description": "Analyze and edit cookies locally. View attributes, expiration, and domain settings."
+	},
+	"headerInspector": {
+		"title": "Header Inspector - QA Toolbox",
+		"description": "Inspect HTTP headers locally. Parse, analyze, and understand request/response headers."
+	},
+	"testCaseBuilder": {
+		"title": "Test Case Builder - QA Toolbox",
+		"description": "Build structured test cases with steps, expected results, and test data locally."
+	},
+	"privacy": {
+		"title": "Privacy - QA Toolbox",
+		"description": "Privacy policy for QA Toolbox. We don't collect, store, or transmit any data."
+	}
+}

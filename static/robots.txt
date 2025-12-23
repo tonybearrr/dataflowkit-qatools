@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://qatools.dataflowkit.dev/sitemap.xml
