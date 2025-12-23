@@ -104,6 +104,30 @@
 		"confirmCancel": "Cancel",
 		"confirmContinue": "Continue"
 	},
+	"payloadBuilder": {
+		"title": "Payload Builder - QA Toolbox",
+		"description": "Build and break JSON payloads for API testing. Create invalid variants to test validation.",
+		"heading": "Payload Builder + Breaker",
+		"subtitle": "Build JSON payloads visually or in code. Generate invalid variants to test API validation.",
+		"whatIsPayloadBuilder": "What is Payload Builder + Breaker?",
+		"payloadBuilderDescription": "Payload Builder + Breaker is a local tool for creating and intentionally breaking JSON payloads for API testing. Build valid payloads visually or in JSON, then generate invalid variants to test API validation and error handling. All processing happens locally in your browser.",
+		"parameters": "Parameters",
+		"templates": "Templates",
+		"templatesDescription": "Predefined payloads for common API requests",
+		"templatesList": "",
+		"jsonEditor": "JSON Editor",
+		"jsonEditorDescription": "Edit, format, and minify raw JSON with validation",
+		"treeBuilder": "Tree Builder",
+		"treeBuilderDescription": "Visual JSON editor to add, remove, and change fields",
+		"breaker": "Variants (Breaker)",
+		"breakerDescription": "Generate invalid payloads (missing fields, wrong types, nulls, edge cases)",
+		"breakerPresets": "",
+		"breakerPresetsList": "",
+		"output": "Output",
+		"outputDescription": "Preview, compare, copy, or export payloads",
+		"privacy": "Privacy",
+		"privacyText": "All data is processed locally in your browser. No data is sent to any server."
+	},
 	"apiResponseValidator": {
 		"title": "API Response Validator - QA Toolbox",
 		"description": "Validate JSON responses against schemas locally. Check structure, types, and required fields. No data sent to servers."

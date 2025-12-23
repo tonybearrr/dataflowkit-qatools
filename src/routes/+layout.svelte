@@ -49,7 +49,13 @@
 						href={getPath('/test-data', langFromPath)}
 						class="text-sm transition-colors {$page.url.pathname.includes('/test-data') ? 'text-[var(--color-text)]' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'}"
 					>
-						{tStringReactive('nav.testDataGenerator', $locale)}
+						Test Data
+					</a>
+					<a
+						href={getPath('/payload', langFromPath)}
+						class="text-sm transition-colors {$page.url.pathname.includes('/payload') ? 'text-[var(--color-text)]' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'}"
+					>
+						Payload
 					</a>
 					<a
 						href={getPath('/api-response-validator', langFromPath)}
@@ -136,7 +142,14 @@
 							onclick={closeMobileMenu}
 							class="px-4 py-2 text-sm transition-colors rounded hover:bg-[var(--color-bg-tertiary)] {$page.url.pathname.includes('/test-data') ? 'text-[var(--color-text)] bg-[var(--color-bg-tertiary)]' : 'text-[var(--color-text-muted)]'}"
 						>
-							{tStringReactive('nav.testDataGenerator', $locale)}
+							Test Data
+						</a>
+						<a
+							href={getPath('/payload', langFromPath)}
+							onclick={closeMobileMenu}
+							class="px-4 py-2 text-sm transition-colors rounded hover:bg-[var(--color-bg-tertiary)] {$page.url.pathname.includes('/payload') ? 'text-[var(--color-text)] bg-[var(--color-bg-tertiary)]' : 'text-[var(--color-text-muted)]'}"
+						>
+							Payload
 						</a>
 						<a
 							href={getPath('/api-response-validator', langFromPath)}

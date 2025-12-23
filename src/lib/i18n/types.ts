@@ -106,6 +106,12 @@ export interface Translations {
 		confirmCancel: string;
 		confirmContinue: string;
 	};
+	payloadBuilder: {
+		title: string;
+		description: string;
+		heading: string;
+		subtitle: string;
+	};
 	apiResponseValidator: {
 		title: string;
 		description: string;

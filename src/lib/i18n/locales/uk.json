@@ -104,6 +104,30 @@
 		"confirmCancel": "Скасувати",
 		"confirmContinue": "Продовжити"
 	},
+	"payloadBuilder": {
+		"title": "Payload Builder - QA Toolbox",
+		"description": "Створюйте та ламайте JSON payload для тестування API. Генеруйте невалідні варіанти для тестування валідації.",
+		"heading": "Payload Builder + Breaker",
+		"subtitle": "Створюйте JSON payload візуально або в коді. Генеруйте невалідні варіанти для тестування валідації API.",
+		"whatIsPayloadBuilder": "Що таке Payload Builder + Breaker?",
+		"payloadBuilderDescription": "Payload Builder + Breaker — це локальний інструмент для створення та навмисного ламання JSON payload'ів для тестування API. Створюйте валідні payload'и візуально або в JSON і генеруйте невалідні варіанти для перевірки валідації та обробки помилок. Усі операції виконуються локально у вашому браузері.",
+		"parameters": "Параметри",
+		"templates": "Шаблони",
+		"templatesDescription": "Готові payload'и для типових API-запитів",
+		"templatesList": "",
+		"jsonEditor": "JSON Editor",
+		"jsonEditorDescription": "Редагування, форматування та мінімізація JSON з валідацією",
+		"treeBuilder": "Tree Builder",
+		"treeBuilderDescription": "Візуальне створення JSON-структур",
+		"breaker": "Варіанти (Breaker)",
+		"breakerDescription": "Генерація помилкових payload'ів (відсутні поля, неправильні типи, null, edge cases)",
+		"breakerPresets": "",
+		"breakerPresetsList": "",
+		"output": "Output",
+		"outputDescription": "Перегляд, порівняння, копіювання або експорт payload'ів",
+		"privacy": "Приватність",
+		"privacyText": "Усі дані обробляються локально у вашому браузері. Дані не відправляються на сервер."
+	},
 	"apiResponseValidator": {
 		"title": "Валідатор відповідей API - QA Toolbox",
 		"description": "Валідуйте JSON-відповіді за схемою локально. Перевіряйте структуру, типи та обов'язкові поля. Дані не відправляються на сервери."

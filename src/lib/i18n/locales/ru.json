@@ -104,6 +104,30 @@
 		"confirmCancel": "Отмена",
 		"confirmContinue": "Продолжить"
 	},
+	"payloadBuilder": {
+		"title": "Payload Builder - QA Toolbox",
+		"description": "Создавайте и ломайте JSON payload для тестирования API. Генерируйте невалидные варианты для тестирования валидации.",
+		"heading": "Payload Builder + Breaker",
+		"subtitle": "Создавайте JSON payload визуально или в коде. Генерируйте невалидные варианты для тестирования валидации API.",
+		"whatIsPayloadBuilder": "Что такое Payload Builder + Breaker?",
+		"payloadBuilderDescription": "Payload Builder + Breaker — локальный инструмент для создания и намеренного ломания JSON payload'ов для тестирования API. Создавайте валидные payload'ы визуально или в JSON и генерируйте невалидные варианты для проверки валидации и обработки ошибок. Вся обработка происходит локально в браузере.",
+		"parameters": "Параметры",
+		"templates": "Шаблоны",
+		"templatesDescription": "Готовые payload'ы для типовых API-запросов",
+		"templatesList": "",
+		"jsonEditor": "JSON Editor",
+		"jsonEditorDescription": "Редактирование, форматирование и минификация JSON с валидацией",
+		"treeBuilder": "Tree Builder",
+		"treeBuilderDescription": "Визуальное построение JSON-структур",
+		"breaker": "Варианты (Breaker)",
+		"breakerDescription": "Генерация ошибочных payload'ов (отсутствующие поля, неверные типы, null, edge cases)",
+		"breakerPresets": "",
+		"breakerPresetsList": "",
+		"output": "Output",
+		"outputDescription": "Просмотр, сравнение, копирование и экспорт payload'ов",
+		"privacy": "Приватность",
+		"privacyText": "Все данные обрабатываются локально в браузере. Данные не отправляются на сервер."
+	},
 	"apiResponseValidator": {
 		"title": "Валидатор ответов API - QA Toolbox",
 		"description": "Валидируйте JSON-ответы по схеме локально. Проверяйте структуру, типы и обязательные поля. Данные не отправляются на серверы."
