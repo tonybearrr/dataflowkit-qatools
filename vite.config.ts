@@ -5,6 +5,6 @@ import { defineConfig } from 'vite';
 export default defineConfig({
 	plugins: [sveltekit(), tailwindcss()],
 	optimizeDeps: {
-		include: ['lucide-svelte']
+		include: ['lucide-svelte', 'ajv', 'ajv-formats']
 	}
 });
