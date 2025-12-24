@@ -242,14 +242,16 @@
 					/>
 				</div>
 			{:else if activeTab === 'output'}
-				<div class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] h-[400px]">
-					<OutputPanel
-						{basePayload}
-						baseJsonString={jsonString}
-						{selectedVariant}
-						{showDiff}
-						onShowDiffChange={(v) => (showDiff = v)}
-					/>
+				<div class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] h-[400px] flex flex-col">
+					<div class="flex-1 min-h-0">
+						<OutputPanel
+							{basePayload}
+							baseJsonString={jsonString}
+							{selectedVariant}
+							{showDiff}
+							onShowDiffChange={(v) => (showDiff = v)}
+						/>
+					</div>
 				</div>
 			{/if}
 		</div>
@@ -301,15 +303,17 @@
 						onRegenerate={handleVariantRegenerate}
 					/>
 				</div>
-				<div class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] h-[500px]">
-					<h3 class="text-sm font-semibold mb-3">Output</h3>
-					<OutputPanel
-						{basePayload}
-						baseJsonString={jsonString}
-						{selectedVariant}
-						{showDiff}
-						onShowDiffChange={(v) => (showDiff = v)}
-					/>
+				<div class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] h-[500px] flex flex-col">
+					<h3 class="text-sm font-semibold mb-3 flex-shrink-0">Output</h3>
+					<div class="flex-1 min-h-0">
+						<OutputPanel
+							{basePayload}
+							baseJsonString={jsonString}
+							{selectedVariant}
+							{showDiff}
+							onShowDiffChange={(v) => (showDiff = v)}
+						/>
+					</div>
 				</div>
 			</div>
 		</div>

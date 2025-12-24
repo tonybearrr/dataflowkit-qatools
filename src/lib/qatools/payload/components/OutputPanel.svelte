@@ -3,7 +3,8 @@
 	import { validateJson, formatJson } from '../validate';
 	import { computeDiff } from '../diff';
 	import { copyToClipboard, downloadFile } from '../export';
-	import { Copy, Download, Eye, EyeOff } from 'lucide-svelte';
+	import { Copy, Download, Eye, EyeOff, CircleCheckBig, CircleX,  } from 'lucide-svelte';
+
 
 	interface Props {
 		basePayload: any;
@@ -49,13 +50,15 @@
 	}
 </script>
 
-<div class="flex flex-col h-full">
-	<div class="flex items-center justify-between mb-2">
+<div class="flex flex-col h-full min-h-0">
+	<div class="flex items-center justify-between mb-2 flex-shrink-0">
 		<div class="flex items-center gap-2">
 			{#if validation.valid}
-				<span class="text-xs text-[var(--color-success)]">✓ Valid JSON</span>
+				<CircleCheckBig class="w-4 h-4 text-[var(--color-success)]" />
+				<span class="text-xs text-[var(--color-success)]">Valid JSON</span>
 			{:else}
-				<span class="text-xs text-[var(--color-error)]">✗ Invalid JSON</span>
+				<CircleX class="w-4 h-4 text-[var(--color-error)]" />
+				<span class="text-xs text-[var(--color-error)]">Invalid JSON</span>
 			{/if}
 			{#if selectedVariant && selectedVariant.warnings && selectedVariant.warnings.length > 0}
 				<span class="text-xs text-[var(--color-warning)]">
@@ -67,36 +70,38 @@
 			{#if selectedVariant}
 				<button
 					onclick={() => onShowDiffChange?.(!showDiff)}
-					class="p-1.5 rounded border border-[var(--color-border)] hover:bg-[var(--color-bg-secondary)] flex items-center gap-1"
+					class="p-1.5 text-xs rounded border border-[var(--color-border)] hover:bg-[var(--color-bg-secondary)] flex items-center gap-1"
 					title="Toggle diff view"
 				>
 					{#if showDiff}
-						<EyeOff class="w-4 h-4" />
+						<EyeOff class="w-4 h-4 mr-1" />
 					{:else}
-						<Eye class="w-4 h-4" />
+						<Eye class="w-4 h-4 mr-1" />
 					{/if}
+					{'Diff'}
 				</button>
 			{/if}
 			<button
 				onclick={handleCopy}
-				class="p-1.5 rounded border border-[var(--color-border)] hover:bg-[var(--color-bg-secondary)] flex items-center gap-1 {copied ? 'bg-[var(--color-success)]/20' : ''}"
+				class="p-1.5 text-xs rounded border border-[var(--color-border)] hover:bg-[var(--color-bg-secondary)] flex items-center gap-1 {copied ? 'bg-[var(--color-success)]/20' : ''}"
 				title="Copy to clipboard"
 			>
-				<Copy class="w-4 h-4" />
+				<Copy class="w-4 h-4 mr-1" />
 				{copied ? 'Copied!' : 'Copy'}
 			</button>
 			<button
 				onclick={handleDownload}
-				class="p-1.5 rounded border border-[var(--color-border)] hover:bg-[var(--color-bg-secondary)] flex items-center gap-1"
+				class="p-1.5 text-xs rounded border border-[var(--color-border)] hover:bg-[var(--color-bg-secondary)] flex items-center gap-1"
 				title="Download JSON"
 			>
-				<Download class="w-4 h-4" />
+				<Download class="w-4 h-4 mr-1" />
+				{'Download'}
 			</button>
 		</div>
 	</div>
 
 	{#if showDiff && selectedVariant}
-		<div class="grid grid-cols-2 gap-4 flex-1 overflow-auto">
+		<div class="grid grid-cols-2 gap-4 flex-1 min-h-0 overflow-auto">
 			<div>
 				<div class="text-xs font-semibold mb-1">Base</div>
 				<pre class="p-3 rounded border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-xs font-mono overflow-auto h-full">{formatJson(basePayload, false)}</pre>
@@ -107,7 +112,7 @@
 			</div>
 		</div>
 		{#if diff.length > 0}
-			<div class="mt-2 p-2 rounded bg-[var(--color-bg-secondary)] text-xs">
+			<div class="mt-2 p-2 rounded bg-[var(--color-bg-secondary)] text-xs flex-shrink-0">
 				<div class="font-semibold mb-1">Changes:</div>
 				<div class="space-y-1">
 					{#each diff as change}
@@ -124,9 +129,9 @@
 			</div>
 		{/if}
 	{:else}
-		<pre class="flex-1 p-3 rounded border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-xs font-mono overflow-auto {validation.valid ? '' : 'border-[var(--color-error)]'}">{currentJson}</pre>
+		<pre class="flex-1 min-h-0 p-3 rounded border border-[var(--color-border)] bg-[var(--color-bg-secondary)] text-xs font-mono overflow-auto {validation.valid ? '' : 'border-[var(--color-error)]'}">{currentJson}</pre>
 		{#if !validation.valid && validation.error}
-			<div class="mt-2 p-2 rounded bg-[var(--color-error)]/10 text-xs text-[var(--color-error)]">
+			<div class="mt-2 p-2 rounded bg-[var(--color-error)]/10 text-xs text-[var(--color-error)] flex-shrink-0">
 				{validation.error.message}
 				{#if validation.error.line}
 					<br />
@@ -135,7 +140,7 @@
 			</div>
 		{/if}
 		{#if selectedVariant && selectedVariant.warnings && selectedVariant.warnings.length > 0}
-			<div class="mt-2 p-2 rounded bg-[var(--color-warning)]/10 text-xs text-[var(--color-warning)]">
+			<div class="mt-2 p-2 rounded bg-[var(--color-warning)]/10 text-xs text-[var(--color-warning)] flex-shrink-0">
 				<div class="font-semibold mb-1">Warnings:</div>
 				<ul class="list-disc list-inside">
 					{#each selectedVariant.warnings as warning}
