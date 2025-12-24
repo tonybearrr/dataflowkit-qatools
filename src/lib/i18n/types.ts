@@ -21,9 +21,6 @@ export interface Translations {
 		apiResponseValidator: string;
 		statusCodeReference: string;
 		userAgentParser: string;
-		cookieInspector: string;
-		headerInspector: string;
-		testCaseBuilder: string;
 	};
 	home: {
 		title: string;
@@ -44,21 +41,6 @@ export interface Translations {
 			tags: string[];
 		};
 		userAgentParser: {
-			title: string;
-			description: string;
-			tags: string[];
-		};
-		cookieInspector: {
-			title: string;
-			description: string;
-			tags: string[];
-		};
-		headerInspector: {
-			title: string;
-			description: string;
-			tags: string[];
-		};
-		testCaseBuilder: {
 			title: string;
 			description: string;
 			tags: string[];
@@ -158,18 +140,6 @@ export interface Translations {
 		description: string;
 	};
 	userAgentParser: {
-		title: string;
-		description: string;
-	};
-	cookieInspector: {
-		title: string;
-		description: string;
-	};
-	headerInspector: {
-		title: string;
-		description: string;
-	};
-	testCaseBuilder: {
 		title: string;
 		description: string;
 	};

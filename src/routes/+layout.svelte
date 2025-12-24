@@ -75,24 +75,6 @@
 					>
 						{tStringReactive('nav.userAgentParser', $locale)}
 					</a>
-					<a
-						href={getPath('/cookie-inspector', langFromPath)}
-						class="text-sm transition-colors {$page.url.pathname.includes('/cookie-inspector') ? 'text-[var(--color-text)]' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'}"
-					>
-						{tStringReactive('nav.cookieInspector', $locale)}
-					</a>
-					<a
-						href={getPath('/header-inspector', langFromPath)}
-						class="text-sm transition-colors {$page.url.pathname.includes('/header-inspector') ? 'text-[var(--color-text)]' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'}"
-					>
-						{tStringReactive('nav.headerInspector', $locale)}
-					</a>
-					<a
-						href={getPath('/test-case-builder', langFromPath)}
-						class="text-sm transition-colors {$page.url.pathname.includes('/test-case-builder') ? 'text-[var(--color-text)]' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'}"
-					>
-						{tStringReactive('nav.testCaseBuilder', $locale)}
-					</a>
 				</nav>
 
 				<div class="flex items-center gap-2 sm:gap-4">
@@ -171,27 +153,6 @@
 							class="px-4 py-2 text-sm transition-colors rounded hover:bg-[var(--color-bg-tertiary)] {$page.url.pathname.includes('/user-agent-parser') ? 'text-[var(--color-text)] bg-[var(--color-bg-tertiary)]' : 'text-[var(--color-text-muted)]'}"
 						>
 							{tStringReactive('nav.userAgentParser', $locale)}
-						</a>
-						<a
-							href={getPath('/cookie-inspector', langFromPath)}
-							onclick={closeMobileMenu}
-							class="px-4 py-2 text-sm transition-colors rounded hover:bg-[var(--color-bg-tertiary)] {$page.url.pathname.includes('/cookie-inspector') ? 'text-[var(--color-text)] bg-[var(--color-bg-tertiary)]' : 'text-[var(--color-text-muted)]'}"
-						>
-							{tStringReactive('nav.cookieInspector', $locale)}
-						</a>
-						<a
-							href={getPath('/header-inspector', langFromPath)}
-							onclick={closeMobileMenu}
-							class="px-4 py-2 text-sm transition-colors rounded hover:bg-[var(--color-bg-tertiary)] {$page.url.pathname.includes('/header-inspector') ? 'text-[var(--color-text)] bg-[var(--color-bg-tertiary)]' : 'text-[var(--color-text-muted)]'}"
-						>
-							{tStringReactive('nav.headerInspector', $locale)}
-						</a>
-						<a
-							href={getPath('/test-case-builder', langFromPath)}
-							onclick={closeMobileMenu}
-							class="px-4 py-2 text-sm transition-colors rounded hover:bg-[var(--color-bg-tertiary)] {$page.url.pathname.includes('/test-case-builder') ? 'text-[var(--color-text)] bg-[var(--color-bg-tertiary)]' : 'text-[var(--color-text-muted)]'}"
-						>
-							{tStringReactive('nav.testCaseBuilder', $locale)}
 						</a>
 					</div>
 				</nav>

@@ -18,10 +18,7 @@
 		"testDataGenerator": "Test Data",
 		"apiResponseValidator": "API Validator",
 		"statusCodeReference": "Status Codes",
-		"userAgentParser": "User Agent",
-		"cookieInspector": "Cookies",
-		"headerInspector": "Headers",
-		"testCaseBuilder": "Test Cases"
+		"userAgentParser": "User Agent"
 	},
 	"home": {
 		"title": "QA Toolbox",
@@ -45,21 +42,6 @@
 			"title": "User Agent Parser",
 			"description": "Parse User-Agent strings to extract browser, OS, device, and version information.",
 			"tags": ["Browser", "OS", "Device"]
-		},
-		"cookieInspector": {
-			"title": "Cookie Inspector",
-			"description": "Analyze and edit cookies. View attributes, expiration, and domain settings.",
-			"tags": ["Cookies", "Session", "Storage"]
-		},
-		"headerInspector": {
-			"title": "Header Inspector",
-			"description": "Inspect HTTP headers. Parse, analyze, and understand request/response headers.",
-			"tags": ["HTTP", "Headers", "Request"]
-		},
-		"testCaseBuilder": {
-			"title": "Test Case Builder",
-			"description": "Build structured test cases with steps, expected results, and test data.",
-			"tags": ["Test Cases", "QA", "Structure"]
 		}
 	},
 	"testDataGenerator": {
@@ -193,18 +175,6 @@
 	"userAgentParser": {
 		"title": "User Agent Parser - QA Toolbox",
 		"description": "Parse User-Agent strings to extract browser, OS, device, and version information locally."
-	},
-	"cookieInspector": {
-		"title": "Cookie Inspector - QA Toolbox",
-		"description": "Analyze and edit cookies locally. View attributes, expiration, and domain settings."
-	},
-	"headerInspector": {
-		"title": "Header Inspector - QA Toolbox",
-		"description": "Inspect HTTP headers locally. Parse, analyze, and understand request/response headers."
-	},
-	"testCaseBuilder": {
-		"title": "Test Case Builder - QA Toolbox",
-		"description": "Build structured test cases with steps, expected results, and test data locally."
 	},
 	"privacy": {
 		"title": "Privacy - QA Toolbox",

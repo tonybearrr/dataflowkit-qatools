@@ -18,10 +18,7 @@
 		"testDataGenerator": "Тестові дані",
 		"apiResponseValidator": "Валідатор API",
 		"statusCodeReference": "Статус-коди",
-		"userAgentParser": "User Agent",
-		"cookieInspector": "Cookies",
-		"headerInspector": "Заголовки",
-		"testCaseBuilder": "Тест-кейси"
+		"userAgentParser": "User Agent"
 	},
 	"home": {
 		"title": "QA Toolbox",
@@ -45,21 +42,6 @@
 			"title": "Парсер User-Agent",
 			"description": "Розпарсуйте рядки User-Agent для витягування інформації про браузер, ОС, пристрій та версію.",
 			"tags": ["Браузер", "ОС", "Пристрій"]
-		},
-		"cookieInspector": {
-			"title": "Інспектор Cookies",
-			"description": "Аналізуйте та редагуйте cookies. Переглядайте атрибути, термін дії та налаштування домену.",
-			"tags": ["Cookies", "Сесія", "Сховище"]
-		},
-		"headerInspector": {
-			"title": "Інспектор заголовків",
-			"description": "Перевіряйте HTTP заголовки. Розпарсуйте, аналізуйте та зрозумійте заголовки запитів/відповідей.",
-			"tags": ["HTTP", "Заголовки", "Запит"]
-		},
-		"testCaseBuilder": {
-			"title": "Конструктор тест-кейсів",
-			"description": "Створюйте структуровані тест-кейси з кроками, очікуваними результатами та тестовими даними.",
-			"tags": ["Тест-кейси", "QA", "Структура"]
 		}
 	},
 	"testDataGenerator": {
@@ -193,18 +175,6 @@
 	"userAgentParser": {
 		"title": "Парсер User-Agent - QA Toolbox",
 		"description": "Розпарсуйте рядки User-Agent для витягування інформації про браузер, ОС, пристрій та версію локально."
-	},
-	"cookieInspector": {
-		"title": "Інспектор Cookies - QA Toolbox",
-		"description": "Аналізуйте та редагуйте cookies локально. Переглядайте атрибути, термін дії та налаштування домену."
-	},
-	"headerInspector": {
-		"title": "Інспектор заголовків - QA Toolbox",
-		"description": "Перевіряйте HTTP заголовки локально. Розпарсуйте, аналізуйте та зрозумійте заголовки запитів/відповідей."
-	},
-	"testCaseBuilder": {
-		"title": "Конструктор тест-кейсів - QA Toolbox",
-		"description": "Створюйте структуровані тест-кейси з кроками, очікуваними результатами та тестовими даними локально."
 	},
 	"privacy": {
 		"title": "Конфіденційність - QA Toolbox",
