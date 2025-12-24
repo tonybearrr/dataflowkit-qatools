@@ -138,6 +138,16 @@
 			<StatusCodeDetails
 				code={selectedCode}
 				locale={(key: string) => tStringReactive(key, lang)}
+				onCodeSelect={(c) => {
+					selectedCode = c;
+					// Scroll to the selected code in the list
+					setTimeout(() => {
+						const element = document.querySelector(`[data-code="${c.code}"]`);
+						if (element) {
+							element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+						}
+					}, 0);
+				}}
 			/>
 		</div>
 	</div>

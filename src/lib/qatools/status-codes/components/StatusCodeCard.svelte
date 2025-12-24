@@ -14,6 +14,7 @@
 
 <button
 	type="button"
+	data-code={code.code}
 	onclick={() => onSelect?.(code)}
 	class="w-full p-4 rounded-lg border transition-all text-left {selected
 		? 'border-[var(--color-accent)] bg-[var(--color-bg-tertiary)]'

@@ -8,9 +8,10 @@
 	interface Props {
 		code: StatusCode | null;
 		locale: (key: string) => string;
+		onCodeSelect?: (code: StatusCode) => void;
 	}
 
-	let { code, locale }: Props = $props();
+	let { code, locale, onCodeSelect }: Props = $props();
 
 	let copiedJson = $state(false);
 	let copiedTitle = $state(false);
@@ -37,7 +38,7 @@
 </script>
 
 {#if code}
-	<div class="sticky top-4">
+	<div class="sticky top-17">
 		<div class="p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)]">
 			<!-- Header -->
 			<div class="mb-6">
@@ -156,14 +157,15 @@
 					</h3>
 					<div class="flex flex-wrap gap-2">
 						{#each getRelatedStatusCodes(code.code) as related}
-							<a
-								href="#{related.code}"
+							<button
+								type="button"
+								onclick={() => onCodeSelect?.(related)}
 								class="px-2 py-1 text-xs rounded border border-[var(--color-border)] bg-[var(--color-bg-tertiary)] hover:bg-[var(--color-bg-secondary)] transition-colors {getCategoryColor(
 									related.category
 								)}"
 							>
 								{related.code} {related.phrase}
-							</a>
+							</button>
 						{/each}
 					</div>
 				</div>
