@@ -169,8 +169,334 @@
 		"workflow5": "Copy the formatted output if needed"
 	},
 	"statusCodeReference": {
-		"title": "Status Code Reference - QA Toolbox",
-		"description": "Quick reference for HTTP status codes with descriptions and use cases."
+		"title": "HTTP Status Codes Explorer - QA Toolbox",
+		"description": "Fast, local reference for HTTP status codes with descriptions, use cases, and API response templates.",
+		"heading": "HTTP Status Codes Explorer",
+		"subtitle": "Quick reference for HTTP status codes with descriptions, use cases, and suggested API responses.",
+		"searchPlaceholder": "Search by code or keyword...",
+		"categoryAll": "All",
+		"category1xx": "1xx",
+		"category2xx": "2xx",
+		"category3xx": "3xx",
+		"category4xx": "4xx",
+		"category5xx": "5xx",
+		"commonOnly": "Common only",
+		"categoryLabel": {
+			"informational": "Informational",
+			"success": "Success",
+			"redirection": "Redirection",
+			"clientError": "Client Error",
+			"serverError": "Server Error"
+		},
+		"whenToUse": "When to use",
+		"commonCauses": "Common causes",
+		"whatToReturn": "What to return",
+		"testingChecklist": "Testing checklist",
+		"relatedCodes": "Related codes",
+		"copyJson": "Copy JSON",
+		"copyTitle": "Copy title",
+		"copied": "Copied!",
+		"noResults": "No results found",
+		"noResultsSuggestion": "Try searching for: 404, not found, rate limit, unauthorized",
+		"whatIs": "What is HTTP Status Codes Explorer?",
+		"whatIsDescription": "HTTP Status Codes Explorer is a local tool for quickly understanding HTTP status codes, their typical causes, and suggested API responses. It helps QA engineers, developers, and backend engineers make informed decisions about which status codes to use and how to structure error responses.",
+		"qaUsage": "How QA uses status codes in API testing",
+		"qaUsageDescription": "QA engineers use status codes to verify API behavior, test error handling, and ensure proper response formats. This tool helps identify the correct status code for different scenarios and provides example responses for testing.",
+		"commonMistakes": "Common mistakes: 401 vs 403, 409 vs 422, 502 vs 504",
+		"commonMistakesDescription": "401 (Unauthorized) means authentication is missing or invalid, while 403 (Forbidden) means the user is authenticated but lacks permission. 409 (Conflict) indicates a state conflict, while 422 (Unprocessable Entity) means the request is well-formed but semantically invalid. 502 (Bad Gateway) is an upstream server error, while 504 (Gateway Timeout) means the upstream server didn't respond in time.",
+		"statusCodes": {
+			"200": {
+				"summary": "Request succeeded. The standard response for successful HTTP requests.",
+				"whenToUse1": "Successful GET, PUT, or PATCH requests",
+				"whenToUse2": "Returning data in response body",
+				"whenToUse3": "Standard success response",
+				"causes1": "Normal successful request processing",
+				"causes2": "Resource retrieved or updated successfully",
+				"checklist1": "Verify response body contains expected data",
+				"checklist2": "Check Content-Type header matches response format",
+				"checklist3": "Ensure response is properly formatted"
+			},
+			"201": {
+				"summary": "Resource created successfully. Typically used after POST requests that create new resources.",
+				"whenToUse1": "After successful POST request creating a new resource",
+				"whenToUse2": "When returning the created resource in response body",
+				"causes1": "New resource successfully created",
+				"causes2": "Resource creation with location header",
+				"checklist1": "Verify Location header points to new resource",
+				"checklist2": "Check response body contains created resource",
+				"checklist3": "Ensure resource ID is included"
+			},
+			"204": {
+				"summary": "Request succeeded but no content to return. Used for successful operations that don't need a response body.",
+				"whenToUse1": "Successful DELETE requests",
+				"whenToUse2": "Successful PUT/PATCH with no response needed",
+				"causes1": "Operation completed successfully without content",
+				"checklist1": "Verify response body is empty",
+				"checklist2": "Check that operation actually succeeded"
+			},
+			"400": {
+				"summary": "Invalid request syntax or parameters. The server cannot process the request due to client error.",
+				"whenToUse1": "Malformed request syntax",
+				"whenToUse2": "Invalid request parameters",
+				"whenToUse3": "Missing required fields",
+				"causes1": "Invalid JSON syntax",
+				"causes2": "Missing required parameters",
+				"causes3": "Invalid parameter types",
+				"causes4": "Malformed request body",
+				"checklist1": "Verify error message explains the issue",
+				"checklist2": "Check error response includes requestId",
+				"checklist3": "Ensure error format is consistent",
+				"checklist4": "Test with various invalid inputs"
+			},
+			"401": {
+				"summary": "Authentication required or failed. The client must authenticate to get the requested response.",
+				"whenToUse1": "Missing or invalid authentication token",
+				"whenToUse2": "Expired authentication credentials",
+				"whenToUse3": "Authentication scheme not supported",
+				"causes1": "No Authorization header provided",
+				"causes2": "Invalid or expired token",
+				"causes3": "Authentication credentials are incorrect",
+				"checklist1": "Verify WWW-Authenticate header is present",
+				"checklist2": "Check error message doesn't leak sensitive info",
+				"checklist3": "Test with missing, invalid, and expired tokens",
+				"checklist4": "Ensure 401 is used, not 403 for auth issues"
+			},
+			"403": {
+				"summary": "Access denied. The client does not have permission to access the resource.",
+				"whenToUse1": "User is authenticated but lacks permission",
+				"whenToUse2": "Resource exists but access is forbidden",
+				"whenToUse3": "Insufficient privileges for the operation",
+				"causes1": "User lacks required permissions",
+				"causes2": "Resource access restricted by policy",
+				"causes3": "Operation not allowed for user role",
+				"checklist1": "Verify user is authenticated (not 401)",
+				"checklist2": "Check error message explains permission issue",
+				"checklist3": "Test with different user roles"
+			},
+			"404": {
+				"summary": "Resource not found. The server cannot find the requested resource.",
+				"whenToUse1": "Resource doesn't exist",
+				"whenToUse2": "Invalid resource ID or path",
+				"whenToUse3": "Endpoint doesn't exist",
+				"causes1": "Resource was deleted",
+				"causes2": "Incorrect URL or resource ID",
+				"causes3": "Resource never existed",
+				"causes4": "Typo in request path",
+				"checklist1": "Verify error message is user-friendly",
+				"checklist2": "Check response doesn't reveal internal structure",
+				"checklist3": "Test with various invalid IDs"
+			},
+			"409": {
+				"summary": "Resource conflict. The request conflicts with the current state of the resource.",
+				"whenToUse1": "Duplicate resource creation",
+				"whenToUse2": "Concurrent modification conflict",
+				"whenToUse3": "State conflict (e.g., deleting active resource)",
+				"causes1": "Resource already exists with same identifier",
+				"causes2": "Optimistic locking conflict",
+				"causes3": "Business rule violation",
+				"checklist1": "Verify error explains the conflict",
+				"checklist2": "Check if retry logic is needed",
+				"checklist3": "Test concurrent modification scenarios"
+			},
+			"415": {
+				"summary": "Unsupported media type. The request entity has a media type which the server does not support.",
+				"whenToUse1": "Invalid Content-Type header",
+				"whenToUse2": "Server only accepts specific media types",
+				"causes1": "Content-Type not supported (e.g., XML instead of JSON)",
+				"causes2": "Missing or incorrect Content-Type header",
+				"checklist1": "Verify Accept header is checked",
+				"checklist2": "Test with various Content-Type values"
+			},
+			"422": {
+				"summary": "Unprocessable entity. The request is well-formed but semantically invalid.",
+				"whenToUse1": "Validation errors in request body",
+				"whenToUse2": "Business logic validation failed",
+				"whenToUse3": "Semantic errors (e.g., invalid date range)",
+				"causes1": "Field validation failed",
+				"causes2": "Business rule violation",
+				"causes3": "Invalid data relationships",
+				"checklist1": "Verify error details specific fields",
+				"checklist2": "Check error format includes field-level errors",
+				"checklist3": "Test with various validation scenarios",
+				"checklist4": "Ensure 422 is used, not 400 for validation"
+			},
+			"429": {
+				"summary": "Too many requests. The user has sent too many requests in a given time.",
+				"whenToUse1": "Rate limit exceeded",
+				"whenToUse2": "Too many requests from same IP/user",
+				"causes1": "Rate limit threshold exceeded",
+				"causes2": "Too frequent API calls",
+				"causes3": "DDoS protection triggered",
+				"checklist1": "Verify Retry-After header is present",
+				"checklist2": "Check error message includes rate limit info",
+				"checklist3": "Test rate limiting behavior"
+			},
+			"500": {
+				"summary": "Internal server error. The server encountered an unexpected condition.",
+				"whenToUse1": "Unexpected server error",
+				"whenToUse2": "Unhandled exception",
+				"causes1": "Application code error",
+				"causes2": "Database connection failure",
+				"causes3": "Third-party service failure",
+				"causes4": "Configuration error",
+				"checklist1": "Verify error doesn't expose sensitive info",
+				"checklist2": "Check requestId is included for debugging",
+				"checklist3": "Ensure proper error logging"
+			},
+			"502": {
+				"summary": "Bad gateway. The server acting as gateway received an invalid response.",
+				"whenToUse1": "Invalid response from upstream server",
+				"whenToUse2": "Upstream server error",
+				"causes1": "Upstream server returned invalid response",
+				"causes2": "Proxy/gateway configuration issue",
+				"causes3": "Network issue between servers",
+				"checklist1": "Verify error message is clear",
+				"checklist2": "Check if retry is appropriate",
+				"checklist3": "Test upstream server failures"
+			},
+			"503": {
+				"summary": "Service unavailable. The server is temporarily unable to handle the request.",
+				"whenToUse1": "Service temporarily down for maintenance",
+				"whenToUse2": "Server overloaded",
+				"whenToUse3": "Temporary unavailability",
+				"causes1": "Scheduled maintenance",
+				"causes2": "Server overload",
+				"causes3": "Dependency service unavailable",
+				"checklist1": "Verify Retry-After header if applicable",
+				"checklist2": "Check error message explains unavailability",
+				"checklist3": "Test service recovery scenarios"
+			},
+			"504": {
+				"summary": "Gateway timeout. The server acting as gateway did not receive a timely response.",
+				"whenToUse1": "Upstream server timeout",
+				"whenToUse2": "Request took too long to process",
+				"causes1": "Upstream server didn't respond in time",
+				"causes2": "Network timeout",
+				"causes3": "Slow upstream processing",
+				"checklist1": "Verify timeout configuration",
+				"checklist2": "Check if request can be optimized",
+				"checklist3": "Test timeout scenarios"
+			},
+			"100": {
+				"summary": "Continue. The server has received the request headers and the client should proceed to send the request body.",
+				"whenToUse1": "Expect header indicates client will send body",
+				"whenToUse2": "Large request body upload",
+				"causes1": "Client sent Expect: 100-continue header",
+				"causes2": "Server ready to receive request body",
+				"checklist1": "Verify client handles 100 response",
+				"checklist2": "Check request body is sent after 100"
+			},
+			"101": {
+				"summary": "Switching Protocols. The server is switching protocols as requested by the client.",
+				"whenToUse1": "Upgrading to WebSocket",
+				"whenToUse2": "Protocol upgrade request",
+				"causes1": "Client requested protocol upgrade",
+				"checklist1": "Verify protocol upgrade is successful"
+			},
+			"202": {
+				"summary": "Accepted. The request has been accepted for processing, but processing has not been completed.",
+				"whenToUse1": "Asynchronous request processing",
+				"whenToUse2": "Request queued for background processing",
+				"causes1": "Request accepted but not yet processed",
+				"checklist1": "Verify request is actually processed",
+				"checklist2": "Check if status endpoint is provided"
+			},
+			"301": {
+				"summary": "Moved permanently. The resource has been permanently moved to a new location.",
+				"whenToUse1": "Resource permanently moved to new URL",
+				"whenToUse2": "URL structure changed permanently",
+				"causes1": "Resource location changed",
+				"causes2": "Domain or path restructure",
+				"checklist1": "Verify Location header points to new URL",
+				"checklist2": "Check redirect is permanent"
+			},
+			"302": {
+				"summary": "Found (temporary redirect). The resource is temporarily located at a different URL.",
+				"whenToUse1": "Temporary resource relocation",
+				"whenToUse2": "Temporary URL change",
+				"causes1": "Resource temporarily moved",
+				"causes2": "Maintenance or load balancing",
+				"checklist1": "Verify Location header is present",
+				"checklist2": "Check redirect method (GET vs POST)"
+			},
+			"304": {
+				"summary": "Not modified. The resource has not been modified since the last request.",
+				"whenToUse1": "Conditional GET with If-None-Match or If-Modified-Since",
+				"whenToUse2": "Cached resource is still valid",
+				"causes1": "Resource unchanged since last request",
+				"checklist1": "Verify ETag or Last-Modified headers",
+				"checklist2": "Check response body is empty"
+			},
+			"307": {
+				"summary": "Temporary redirect. The request should be repeated with the same HTTP method.",
+				"whenToUse1": "Temporary redirect preserving method",
+				"whenToUse2": "Load balancing or maintenance",
+				"causes1": "Temporary server relocation",
+				"checklist1": "Verify HTTP method is preserved",
+				"checklist2": "Check Location header"
+			},
+			"308": {
+				"summary": "Permanent redirect. The request and all future requests should be repeated using the provided URI.",
+				"whenToUse1": "Permanent redirect preserving method",
+				"whenToUse2": "Permanent URL change",
+				"causes1": "Permanent resource relocation",
+				"checklist1": "Verify method and body are preserved",
+				"checklist2": "Check redirect is truly permanent"
+			},
+			"405": {
+				"summary": "Method not allowed. The HTTP method is not allowed for the requested resource.",
+				"whenToUse1": "HTTP method not supported for endpoint",
+				"whenToUse2": "Endpoint exists but method is wrong",
+				"causes1": "Method not implemented for resource",
+				"causes2": "Only specific methods allowed",
+				"checklist1": "Verify Allow header lists allowed methods",
+				"checklist2": "Test with various HTTP methods"
+			},
+			"408": {
+				"summary": "Request timeout. The server timed out waiting for the request.",
+				"whenToUse1": "Client took too long to send request",
+				"whenToUse2": "Request timeout before completion",
+				"causes1": "Client didn't send request in time",
+				"causes2": "Network connection timeout",
+				"checklist1": "Verify timeout configuration",
+				"checklist2": "Test with slow connections"
+			},
+			"410": {
+				"summary": "Gone. The resource is no longer available and will not be available again.",
+				"whenToUse1": "Resource permanently deleted",
+				"whenToUse2": "Resource removed and won't return",
+				"causes1": "Resource permanently removed",
+				"causes2": "Resource expired and deleted",
+				"checklist1": "Verify resource won't be restored",
+				"checklist2": "Check error message explains deletion"
+			},
+			"412": {
+				"summary": "Precondition failed. One or more conditions in the request header fields evaluated to false.",
+				"whenToUse1": "If-Match or If-None-Match condition failed",
+				"whenToUse2": "If-Unmodified-Since condition failed",
+				"causes1": "ETag mismatch",
+				"causes2": "Resource modified since last request",
+				"checklist1": "Verify precondition headers",
+				"checklist2": "Test optimistic locking scenarios"
+			},
+			"413": {
+				"summary": "Payload too large. The request entity is larger than limits defined by the server.",
+				"whenToUse1": "Request body exceeds size limit",
+				"whenToUse2": "File upload too large",
+				"causes1": "Payload exceeds server limit",
+				"causes2": "File size too large",
+				"checklist1": "Verify size limit is documented",
+				"checklist2": "Test with various payload sizes"
+			},
+			"501": {
+				"summary": "Not implemented. The server does not support the functionality required to fulfill the request.",
+				"whenToUse1": "Feature not yet implemented",
+				"whenToUse2": "Method not supported by server",
+				"causes1": "Endpoint or feature not available",
+				"checklist1": "Verify feature is truly not implemented",
+				"checklist2": "Check if 404 is more appropriate"
+			}
+		}
 	},
 	"userAgentParser": {
 		"title": "User Agent Parser - QA Toolbox",

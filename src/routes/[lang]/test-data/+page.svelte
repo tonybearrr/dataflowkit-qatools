@@ -96,10 +96,17 @@
 
 <div class="max-w-7xl mx-auto px-4 py-4 sm:py-8">
 	<header class="mb-6 sm:mb-8">
-		<h1 class="text-2xl sm:text-3xl font-bold mb-3">{tStringReactive('testDataGenerator.heading', $locale)}</h1>
-		<p class="text-sm sm:text-base text-[var(--color-text-muted)] max-w-2xl">
-			{tStringReactive('testDataGenerator.subtitle', $locale)}
-		</p>
+		<div class="flex gap-3 mb-4">
+			<div class="w-12 h-12 rounded-lg bg-blue-500/10 flex items-center justify-center">
+				<Database class="w-6 h-6 text-blue-400" />
+			</div>
+			<div>
+				<h1 class="text-2xl sm:text-3xl font-bold mb-3">{tStringReactive('testDataGenerator.heading', $locale)}</h1>
+				<p class="text-sm sm:text-base text-[var(--color-text-muted)] max-w-2xl">
+					{tStringReactive('testDataGenerator.subtitle', $locale)}
+				</p>
+			</div>
+		</div>
 	</header>
 
 	{#if isMobile}

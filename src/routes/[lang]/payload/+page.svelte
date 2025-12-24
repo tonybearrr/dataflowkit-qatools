@@ -24,7 +24,7 @@
 	import JsonEditor from '$lib/qatools/payload/components/JsonEditor.svelte';
 	import BreakerPanel from '$lib/qatools/payload/components/BreakerPanel.svelte';
 	import OutputPanel from '$lib/qatools/payload/components/OutputPanel.svelte';
-	import { Code2 } from 'lucide-svelte';
+	import { Braces } from 'lucide-svelte';
 
 	const lang = $derived(($page.params.lang || 'en') as Locale);
 
@@ -166,10 +166,17 @@
 
 <div class="max-w-7xl mx-auto px-4 py-4 sm:py-8">
 	<header class="mb-6 sm:mb-8">
-		<h1 class="text-2xl sm:text-3xl font-bold mb-3">Payload Builder + Breaker</h1>
-		<p class="text-sm sm:text-base text-[var(--color-text-muted)] max-w-2xl">
-			Build JSON payloads visually or in code. Generate invalid variants to test API validation.
-		</p>
+		<div class="flex gap-3 mb-4">
+			<div class="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center">
+				<Braces class="w-6 h-6 text-purple-400" />
+			</div>
+			<div>
+				<h1 class="text-2xl sm:text-3xl font-bold mb-3">Payload Builder + Breaker</h1>
+				<p class="text-sm sm:text-base text-[var(--color-text-muted)] max-w-2xl">
+					Build JSON payloads visually or in code. Generate invalid variants to test API validation.
+				</p>
+			</div>
+		</div>
 	</header>
 
 	{#if isMobile}
