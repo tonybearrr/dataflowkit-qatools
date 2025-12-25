@@ -70,6 +70,12 @@
 						{tStringReactive('nav.statusCodeReference', $locale)}
 					</a>
 					<a
+						href={getPath('/headers-inspector', langFromPath)}
+						class="text-sm transition-colors {$page.url.pathname.includes('/headers-inspector') ? 'text-[var(--color-text)]' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'}"
+					>
+						{tStringReactive('nav.headersInspector', $locale)}
+					</a>
+					<a
 						href={getPath('/user-agent-parser', langFromPath)}
 						class="text-sm transition-colors {$page.url.pathname.includes('/user-agent-parser') ? 'text-[var(--color-text)]' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'}"
 					>

@@ -16,7 +16,32 @@
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://qatools.dataflowkit.dev/en/test-data-generator</loc>
+		<loc>https://qatools.dataflowkit.dev/en/test-data</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://qatools.dataflowkit.dev/uk/test-data</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://qatools.dataflowkit.dev/ru/test-data</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://qatools.dataflowkit.dev/en/payload</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://qatools.dataflowkit.dev/uk/payload</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://qatools.dataflowkit.dev/ru/payload</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
@@ -26,7 +51,42 @@
 		<priority>0.8</priority>
 	</url>
 	<url>
+		<loc>https://qatools.dataflowkit.dev/uk/api-response-validator</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://qatools.dataflowkit.dev/ru/api-response-validator</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
 		<loc>https://qatools.dataflowkit.dev/en/status-code-reference</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://qatools.dataflowkit.dev/uk/status-code-reference</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://qatools.dataflowkit.dev/ru/status-code-reference</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://qatools.dataflowkit.dev/en/headers-inspector</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://qatools.dataflowkit.dev/uk/headers-inspector</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://qatools.dataflowkit.dev/ru/headers-inspector</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
@@ -36,22 +96,27 @@
 		<priority>0.8</priority>
 	</url>
 	<url>
-		<loc>https://qatools.dataflowkit.dev/en/cookie-inspector</loc>
+		<loc>https://qatools.dataflowkit.dev/uk/user-agent-parser</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url>
-		<loc>https://qatools.dataflowkit.dev/en/header-inspector</loc>
-		<changefreq>monthly</changefreq>
-		<priority>0.8</priority>
-	</url>
-	<url>
-		<loc>https://qatools.dataflowkit.dev/en/test-case-builder</loc>
+		<loc>https://qatools.dataflowkit.dev/ru/user-agent-parser</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>
 	<url>
 		<loc>https://qatools.dataflowkit.dev/en/privacy</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.5</priority>
+	</url>
+	<url>
+		<loc>https://qatools.dataflowkit.dev/uk/privacy</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.5</priority>
+	</url>
+	<url>
+		<loc>https://qatools.dataflowkit.dev/ru/privacy</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.5</priority>
 	</url>

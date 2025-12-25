@@ -18,7 +18,8 @@
 		"testDataGenerator": "Test Data",
 		"apiResponseValidator": "API Validator",
 		"statusCodeReference": "Status Codes",
-		"userAgentParser": "User Agent"
+		"userAgentParser": "User Agent",
+		"headersInspector": "Headers"
 	},
 	"home": {
 		"title": "QA Toolbox",
@@ -42,6 +43,11 @@
 			"title": "User Agent Parser",
 			"description": "Parse User-Agent strings to extract browser, OS, device, and version information.",
 			"tags": ["Browser", "OS", "Device"]
+		},
+		"headersInspector": {
+			"title": "Headers Inspector",
+			"description": "Parse and analyze HTTP headers. Understand their purpose and detect configuration issues.",
+			"tags": ["HTTP", "Headers", "CORS"]
 		}
 	},
 	"testDataGenerator": {
@@ -501,6 +507,312 @@
 	"userAgentParser": {
 		"title": "User Agent Parser - QA Toolbox",
 		"description": "Parse User-Agent strings to extract browser, OS, device, and version information locally."
+	},
+	"headersInspector": {
+		"title": "Headers Inspector - QA Toolbox",
+		"description": "Parse and analyze HTTP headers. Understand what each header does, detect common issues, and get quick copy actions.",
+		"heading": "Headers Inspector",
+		"subtitle": "Parse raw HTTP headers, understand their purpose, and detect common configuration issues.",
+		"inputLabel": "Raw Headers",
+		"placeholder": "Paste headers from DevTools or curl output...\n\nExample:\nContent-Type: application/json\nAuthorization: Bearer token123",
+		"typeLabel": "Type:",
+		"typeRequest": "Request",
+		"typeResponse": "Response",
+		"autoParse": "Auto-parse",
+		"parse": "Parse",
+		"reset": "Reset",
+		"example": "Example",
+		"exampleRequest": "Request Headers",
+		"exampleResponse": "Response Headers",
+		"exampleCors": "CORS Error Example",
+		"exampleCookie": "Cookie Issue Example",
+		"headersList": "Headers",
+		"noHeaders": "Paste headers above and click Parse to get started.",
+		"details": {
+			"whatItDoes": "What it does",
+			"whenToUse": "When to use",
+			"commonMistakes": "Common mistakes",
+			"securityNotes": "Security notes",
+			"quickActions": "Quick actions",
+			"copyName": "Copy name",
+			"copyValue": "Copy value",
+			"copyFull": "Copy header:value",
+			"selectHeader": "Select a header to view details",
+			"noInfo": "No information available for this header.",
+			"recommendation": "Recommendation:",
+			"hints": {
+				"cacheValidationMissing": "Consider adding ETag or Last-Modified for cache validation.",
+				"sameSiteNoneSecure": "Add Secure flag when using SameSite=None.",
+				"cannotUseStarWithCredentials": "Cannot use \"*\" with credentials. Use a specific origin instead.",
+				"requiresSpecificAcao": "Requires a specific Access-Control-Allow-Origin (not \"*\")."
+			},
+			"duplicates": "duplicates"
+		},
+		"issues": {
+			"detectedIssues": "Detected Issues",
+			"showDetectedIssues": "Show Detected Issues",
+			"errors": "errors",
+			"warnings": "warnings",
+			"info": "info",
+			"showOnlyErrors": "Show only errors",
+			"hideIssues": "Hide issues",
+			"less": "Less",
+			"more": "More",
+			"corsStarWithCredentials": "Invalid CORS: ACAO=\"*\" with ACAC=\"true\"",
+			"corsStarWithCredentialsWhy": "CORS specification doesn't allow wildcard origin with credentials. Use specific origin instead.",
+			"corsVaryOrigin": "Recommend Vary: Origin when using specific ACAO with credentials",
+			"corsVaryOriginWhy": "When using specific origin with credentials, add Vary: Origin to ensure proper caching behavior.",
+			"corsMissingAcao": "CORS request detected but no ACAO header in response",
+			"corsMissingAcaoWhy": "Request includes Origin header but response doesn't specify allowed origins.",
+			"cacheNoStoreWithEtag": "Cache-Control: no-store with ETag may be redundant",
+			"cacheNoStoreWithEtagWhy": "no-store prevents caching, so ETag validation is unnecessary.",
+			"cacheMissingForApi": "API response (JSON) missing Cache-Control header",
+			"cacheMissingForApiWhy": "API responses should explicitly specify caching behavior.",
+			"securityMissingHsts": "HTTPS detected but missing HSTS header",
+			"securityMissingHstsWhy": "HSTS helps prevent protocol downgrade attacks.",
+			"securityMissingXContentType": "HTML content missing X-Content-Type-Options header",
+			"securityMissingXContentTypeWhy": "Prevents MIME type sniffing attacks.",
+			"cookieSameSiteNoneNoSecure": "Set-Cookie: SameSite=None requires Secure flag",
+			"cookieSameSiteNoneNoSecureWhy": "SameSite=None cookies must be marked Secure to prevent interception.",
+			"cookieMissingHttpOnly": "Session-like cookie missing HttpOnly flag",
+			"cookieMissingHttpOnlyWhy": "HttpOnly prevents JavaScript access, reducing XSS attack surface."
+		},
+		"headers": {
+			"authorization": {
+				"description": "Contains credentials for authenticating the client with the server.",
+				"whenToUse1": "Bearer tokens for API authentication",
+				"whenToUse2": "Basic authentication credentials",
+				"mistakes1": "Sending tokens in query parameters instead",
+				"mistakes2": "Not using HTTPS for sensitive credentials",
+				"security": "Always use HTTPS when sending credentials. Consider token expiration and rotation."
+			},
+			"wwwAuthenticate": {
+				"description": "Indicates the authentication scheme required for access.",
+				"whenToUse1": "401 Unauthorized responses to indicate required auth",
+				"mistakes1": "Missing on 401 responses"
+			},
+			"contentType": {
+				"description": "Indicates the media type of the resource.",
+				"whenToUse1": "Request body content type (POST, PUT, PATCH)",
+				"whenToUse2": "Response body content type",
+				"mistakes1": "Missing charset for text types",
+				"mistakes2": "Incorrect MIME type (e.g., application/json vs text/json)"
+			},
+			"accept": {
+				"description": "Specifies media types acceptable for the response.",
+				"whenToUse1": "Client indicates preferred response format",
+				"mistakes1": "Not specifying Accept header when format matters"
+			},
+			"acceptEncoding": {
+				"description": "Specifies supported compression methods.",
+				"whenToUse1": "To reduce response size",
+				"mistakes1": "No compression enabled",
+				"mistakes2": "Server ignores header",
+				"security": "Compression can affect certain attacks."
+			},
+			"acceptLanguage": {
+				"description": "Defines preferred client languages.",
+				"whenToUse1": "For response localization",
+				"mistakes1": "No default language fallback",
+				"mistakes2": "Server ignores header",
+				"security": "Can be used for fingerprinting."
+			},
+			"contentEncoding": {
+				"description": "Indicates encoding transformations applied to the message body.",
+				"whenToUse1": "Compressed responses (gzip, br, deflate)",
+				"mistakes1": "Not matching Content-Encoding with actual encoding"
+			},
+			"contentLength": {
+				"description": "Size of the message body in bytes.",
+				"whenToUse1": "Request/response body size indication",
+				"mistakes1": "Incorrect length causing connection issues"
+			},
+			"cacheControl": {
+				"description": "Directives for caching mechanisms in requests and responses.",
+				"whenToUse1": "Control caching behavior (public, private, no-cache, max-age)",
+				"whenToUse2": "API responses that should not be cached",
+				"mistakes1": "Caching sensitive data",
+				"mistakes2": "Missing Cache-Control on API responses"
+			},
+			"etag": {
+				"description": "Entity tag for cache validation.",
+				"whenToUse1": "Conditional requests and cache validation",
+				"mistakes1": "Weak ETags when strong ETags are needed"
+			},
+			"lastModified": {
+				"description": "Indicates when the resource was last modified.",
+				"whenToUse1": "For caching and conditional requests",
+				"mistakes1": "Missing for static resources",
+				"mistakes2": "Invalid date format",
+				"security": "May reveal resource update patterns."
+			},
+			"ifNoneMatch": {
+				"description": "Conditional request using ETag for cache validation.",
+				"whenToUse1": "Check if resource changed since last request",
+				"mistakes1": "Not handling 304 Not Modified responses"
+			},
+			"expires": {
+				"description": "Date/time after which the response is considered stale.",
+				"whenToUse1": "Legacy cache expiration (prefer Cache-Control)",
+				"mistakes1": "Using Expires instead of Cache-Control"
+			},
+			"vary": {
+				"description": "Headers that affect response selection.",
+				"whenToUse1": "CORS responses with credentials and specific origin",
+				"mistakes1": "Missing Vary: Origin when needed"
+			},
+			"origin": {
+				"description": "Origin of the request (scheme, host, port).",
+				"whenToUse1": "CORS requests from browsers"
+			},
+			"accessControlAllowOrigin": {
+				"description": "Specifies allowed origins for CORS requests.",
+				"whenToUse1": "CORS-enabled API responses",
+				"mistakes1": "Using * with credentials (not allowed)",
+				"mistakes2": "Not validating origin on server side"
+			},
+			"accessControlAllowCredentials": {
+				"description": "Indicates if credentials can be included in CORS requests.",
+				"whenToUse1": "CORS requests that need cookies or auth headers",
+				"mistakes1": "Setting true with ACAO=\"*\" (invalid)"
+			},
+			"accessControlAllowHeaders": {
+				"description": "Headers allowed in CORS requests.",
+				"whenToUse1": "CORS preflight responses"
+			},
+			"accessControlAllowMethods": {
+				"description": "HTTP methods allowed in CORS requests.",
+				"whenToUse1": "CORS preflight responses"
+			},
+			"accessControlExposeHeaders": {
+				"description": "Headers exposed to JavaScript in CORS responses.",
+				"whenToUse1": "CORS responses exposing custom headers"
+			},
+			"accessControlMaxAge": {
+				"description": "Defines how long CORS preflight results are cached.",
+				"whenToUse1": "To reduce OPTIONS requests",
+				"mistakes1": "Not set",
+				"mistakes2": "Excessively high value",
+				"security": "CORS changes may apply with delay."
+			},
+			"setCookie": {
+				"description": "Sets a cookie in the browser.",
+				"whenToUse1": "Session management, preferences, tracking",
+				"mistakes1": "SameSite=None without Secure",
+				"mistakes2": "Missing HttpOnly for session cookies",
+				"mistakes3": "Not setting appropriate expiration",
+				"security": "Use HttpOnly for session cookies, Secure for HTTPS-only, and appropriate SameSite values."
+			},
+			"cookie": {
+				"description": "Contains stored cookies for the domain.",
+				"whenToUse1": "Sending cookies with requests"
+			},
+			"contentSecurityPolicy": {
+				"description": "Controls resources the browser can load to prevent XSS.",
+				"whenToUse1": "Web pages that need XSS protection",
+				"mistakes1": "Too restrictive policy breaking functionality",
+				"security": "Start with default-src 'self' and gradually add needed sources."
+			},
+			"strictTransportSecurity": {
+				"description": "Forces HTTPS connections for the domain.",
+				"whenToUse1": "HTTPS-only sites",
+				"mistakes1": "Including subdomains when not ready",
+				"security": "Use max-age of at least 31536000 (1 year) and includeSubDomains when appropriate."
+			},
+			"xFrameOptions": {
+				"description": "Prevents clickjacking attacks by controlling framing.",
+				"whenToUse1": "Pages that should not be embedded in iframes",
+				"mistakes1": "Using DENY when SAMEORIGIN is sufficient"
+			},
+			"xContentTypeOptions": {
+				"description": "Prevents MIME type sniffing attacks.",
+				"whenToUse1": "All HTML responses",
+				"mistakes1": "Missing on HTML content"
+			},
+			"referrerPolicy": {
+				"description": "Controls referrer information sent with requests.",
+				"whenToUse1": "Privacy-sensitive applications"
+			},
+			"permissionsPolicy": {
+				"description": "Controls browser features and APIs available to the page.",
+				"whenToUse1": "Restricting access to browser features"
+			},
+			"location": {
+				"description": "URL for redirection responses.",
+				"whenToUse1": "3xx redirect responses",
+				"mistakes1": "Relative URLs when absolute is needed"
+			},
+			"retryAfter": {
+				"description": "Time to wait before retrying the request.",
+				"whenToUse1": "429 Too Many Requests or 503 Service Unavailable"
+			},
+			"xForwardedFor": {
+				"description": "Original client IP address when behind proxy.",
+				"whenToUse1": "Proxied requests",
+				"mistakes1": "Trusting without validation (security risk)"
+			},
+			"xForwardedProto": {
+				"description": "Original protocol (http/https) when behind proxy.",
+				"whenToUse1": "Proxied requests"
+			},
+			"forwarded": {
+				"description": "Standardized proxy information (replaces X-Forwarded-*).",
+				"whenToUse1": "Proxied requests (prefer over X-Forwarded-*)"
+			},
+			"serverTiming": {
+				"description": "Performance metrics from the server.",
+				"whenToUse1": "Performance monitoring and debugging"
+			},
+			"referer": {
+				"description": "Provides the URL of the request origin.",
+				"whenToUse1": "For analytics and request tracing",
+				"mistakes1": "Using it for security checks",
+				"mistakes2": "Expecting it when blocked by policy",
+				"security": "May leak sensitive URLs."
+			},
+			"userAgent": {
+				"description": "Identifies the client or browser.",
+				"whenToUse1": "For debugging and analytics",
+				"mistakes1": "Access logic based on User-Agent",
+				"security": "Easily spoofed."
+			},
+			"pragma": {
+				"description": "Legacy HTTP/1.0 cache control directive. Use Cache-Control instead.",
+				"whenToUse1": "Legacy compatibility (prefer Cache-Control)",
+				"mistakes1": "Using Pragma instead of Cache-Control"
+			},
+			"date": {
+				"description": "Date and time when the message was originated.",
+				"whenToUse1": "HTTP responses to indicate message origination time",
+				"mistakes1": "Incorrect server time can cause cache TTL issues and problems with signatures (JWT, signed URLs)"
+			},
+			"server": {
+				"description": "Information about the server software handling the request.",
+				"whenToUse1": "Server identification and debugging",
+				"mistakes1": "Revealing sensitive server version information"
+			},
+			"xEnvoyUpstreamServiceTime": {
+				"description": "Time in milliseconds taken by the upstream service, added by Envoy proxy.",
+				"whenToUse1": "Performance monitoring in Envoy-based architectures",
+				"mistakes1": "Confusing with total response time in browser — this is only part of the path (without client, TLS, network, etc.)"
+			},
+			"xXssProtection": {
+				"description": "Enables XSS filter in older browsers (IE, older Chrome). Deprecated, use Content-Security-Policy instead.",
+				"whenToUse1": "Legacy browser support (deprecated)",
+				"mistakes1": "Using X-XSS-Protection instead of Content-Security-Policy",
+				"security": "Often set to X-XSS-Protection: 0 to disable old filters that sometimes made things worse."
+			}
+		},
+		"whatIs": "What is Headers Inspector?",
+		"whatIsDescription": "Headers Inspector is a local tool that parses raw HTTP request/response headers into a readable list with explanations and common pitfalls. It helps you spot misconfigurations in CORS, caching, content types, and cookies during API debugging and QA testing — directly in your browser.",
+		"whatYouCanDo": "What you can do here",
+		"whatYouCanDo1": "Paste raw headers and instantly parse them into key/value pairs",
+		"whatYouCanDo2": "Switch between Request and Response modes",
+		"whatYouCanDo3": "See detected issues with severity (error/warning/info) and suggested fixes",
+		"whatYouCanDo4": "Open each header to view meaning, usage, and typical mistakes",
+		"whatYouCanDo5": "Copy header name/value or full Header: value line",
+		"privacy": "Privacy",
+		"privacyText": "All data is processed locally in your browser. No data is sent to any server."
 	},
 	"privacy": {
 		"title": "Privacy - QA Toolbox",

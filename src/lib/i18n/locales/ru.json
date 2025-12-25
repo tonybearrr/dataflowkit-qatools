@@ -18,7 +18,8 @@
 		"testDataGenerator": "Тестовые данные",
 		"apiResponseValidator": "Валидатор API",
 		"statusCodeReference": "Статус-коды",
-		"userAgentParser": "User Agent"
+		"userAgentParser": "User Agent",
+		"headersInspector": "Headers"
 	},
 	"home": {
 		"title": "QA Toolbox",
@@ -42,6 +43,11 @@
 			"title": "Парсер User-Agent",
 			"description": "Распарсите строки User-Agent для извлечения информации о браузере, ОС, устройстве и версии.",
 			"tags": ["Браузер", "ОС", "Устройство"]
+		},
+		"headersInspector": {
+			"title": "Инспектор заголовков",
+			"description": "Парсинг и анализ HTTP заголовков. Поймите их назначение и обнаружьте проблемы конфигурации.",
+			"tags": ["HTTP", "Заголовки", "CORS"]
 		}
 	},
 	"testDataGenerator": {
@@ -501,6 +507,306 @@
 	"userAgentParser": {
 		"title": "Парсер User-Agent - QA Toolbox",
 		"description": "Распарсите строки User-Agent для извлечения информации о браузере, ОС, устройстве и версии локально."
+	},
+	"headersInspector": {
+		"title": "Инспектор заголовков - QA Toolbox",
+		"description": "Парсинг и анализ HTTP заголовков. Поймите назначение каждого заголовка, обнаружьте типичные проблемы и получите быстрые действия копирования.",
+		"heading": "Инспектор заголовков",
+		"subtitle": "Парсинг HTTP заголовков, понимание их назначения и обнаружение типичных проблем конфигурации.",
+		"inputLabel": "Заголовки",
+		"placeholder": "Вставьте заголовки из DevTools или вывода curl...\n\nПример:\nContent-Type: application/json\nAuthorization: Bearer token123",
+		"typeLabel": "Тип:",
+		"typeRequest": "Запрос",
+		"typeResponse": "Ответ",
+		"autoParse": "Авто-парсинг",
+		"parse": "Парсить",
+		"reset": "Сбросить",
+		"example": "Пример",
+		"exampleRequest": "Заголовки запроса",
+		"exampleResponse": "Заголовки ответа",
+		"exampleCors": "Пример ошибки CORS",
+		"exampleCookie": "Пример проблемы с cookie",
+		"headersList": "Заголовки",
+		"noHeaders": "Вставьте заголовки выше и нажмите Парсить, чтобы начать.",
+		"details": {
+			"whatItDoes": "Что делает",
+			"whenToUse": "Когда использовать",
+			"commonMistakes": "Типичные ошибки",
+			"securityNotes": "Примечания безопасности",
+			"quickActions": "Быстрые действия",
+			"copyName": "Копировать название",
+			"copyValue": "Копировать значение",
+			"copyFull": "Копировать заголовок:значение",
+			"selectHeader": "Выберите заголовок для просмотра деталей",
+			"noInfo": "Информация для этого заголовка недоступна.",
+			"duplicates": "дубликатов",
+			"recommendation": "Рекомендация:",
+			"hints": {
+				"cacheValidationMissing": "Рекомендуется добавить ETag или Last-Modified для валидации кеша.",
+				"sameSiteNoneSecure": "Добавьте флаг Secure при использовании SameSite=None.",
+				"cannotUseStarWithCredentials": "Нельзя использовать \"*\" с credentials. Используйте конкретный origin вместо этого.",
+				"requiresSpecificAcao": "Требуется конкретный Access-Control-Allow-Origin (не \"*\")."
+			}
+		},
+		"issues": {
+			"detectedIssues": "Обнаруженные проблемы",
+			"showDetectedIssues": "Показать обнаруженные проблемы",
+			"errors": "ошибок",
+			"warnings": "предупреждений",
+			"info": "инфо",
+			"showOnlyErrors": "Показать только ошибки",
+			"hideIssues": "Скрыть проблемы",
+			"less": "Меньше",
+			"more": "Больше",
+			"corsStarWithCredentials": "Неверная CORS: ACAO=\"*\" с ACAC=\"true\"",
+			"corsStarWithCredentialsWhy": "Спецификация CORS не позволяет wildcard origin с credentials. Используйте конкретный origin.",
+			"corsVaryOrigin": "Рекомендуется Vary: Origin при использовании конкретного ACAO с credentials",
+			"corsVaryOriginWhy": "При использовании конкретного origin с credentials, добавьте Vary: Origin для правильного кеширования.",
+			"corsMissingAcao": "Обнаружен CORS запрос, но нет заголовка ACAO в ответе",
+			"corsMissingAcaoWhy": "Запрос содержит заголовок Origin, но ответ не указывает разрешённые origins.",
+			"cacheNoStoreWithEtag": "Cache-Control: no-store с ETag может быть избыточным",
+			"cacheNoStoreWithEtagWhy": "no-store предотвращает кеширование, поэтому валидация ETag не нужна.",
+			"cacheMissingForApi": "Ответ API (JSON) без заголовка Cache-Control",
+			"cacheMissingForApiWhy": "Ответы API должны явно указывать поведение кеширования.",
+			"securityMissingHsts": "Обнаружен HTTPS, но отсутствует заголовок HSTS",
+			"securityMissingHstsWhy": "HSTS помогает предотвратить атаки снижения протокола.",
+			"securityMissingXContentType": "HTML контент без заголовка X-Content-Type-Options",
+			"securityMissingXContentTypeWhy": "Предотвращает атаки MIME type sniffing.",
+			"cookieSameSiteNoneNoSecure": "Set-Cookie: SameSite=None требует флаг Secure",
+			"cookieSameSiteNoneNoSecureWhy": "Cookie с SameSite=None должны быть помечены Secure для предотвращения перехвата.",
+			"cookieMissingHttpOnly": "Cookie типа сессии без флага HttpOnly",
+			"cookieMissingHttpOnlyWhy": "HttpOnly предотвращает доступ JavaScript, уменьшая поверхность атаки XSS."
+		},
+		"headers": {
+			"authorization": {
+				"description": "Содержит учётные данные для аутентификации клиента на сервере.",
+				"whenToUse1": "Bearer токены для аутентификации API",
+				"whenToUse2": "Учётные данные Basic аутентификации",
+				"mistakes1": "Отправка токенов в параметрах запроса вместо заголовка",
+				"mistakes2": "Не использование HTTPS для чувствительных учётных данных",
+				"security": "Всегда используйте HTTPS при отправке учётных данных. Рассмотрите срок действия и ротацию токенов."
+			},
+			"wwwAuthenticate": {
+				"description": "Указывает схему аутентификации, необходимую для доступа.",
+				"whenToUse1": "Ответы 401 Unauthorized для указания необходимой аутентификации",
+				"mistakes1": "Отсутствие на ответах 401"
+			},
+			"contentType": {
+				"description": "Указывает медиа-тип ресурса.",
+				"whenToUse1": "Тип контента тела запроса (POST, PUT, PATCH)",
+				"whenToUse2": "Тип контента тела ответа",
+				"mistakes1": "Отсутствие charset для текстовых типов",
+				"mistakes2": "Неверный MIME тип (например, application/json vs text/json)"
+			},
+			"accept": {
+				"description": "Указывает медиа-типы, приемлемые для ответа.",
+				"whenToUse1": "Клиент указывает желаемый формат ответа",
+				"mistakes1": "Не указывают заголовок Accept, когда формат важен"
+			},
+			"acceptEncoding": {
+				"description": "Указывает поддерживаемые методы сжатия.",
+				"whenToUse1": "Для оптимизации размера ответа.",
+				"mistakes1": "Отсутствие сжатия",
+				"mistakes2": "Игнорирование заголовка сервером",
+				"security": "Сжатие может влиять на безопасность."
+			},
+			"acceptLanguage": {
+				"description": "Определяет предпочтительные языки клиента.",
+				"whenToUse1": "Для локализации ответов.",
+				"mistakes1": "Отсутствие fallback-языка",
+				"mistakes2": "Игнорирование заголовка сервером",
+				"security": "Может использоваться для fingerprinting."
+			},
+			"contentEncoding": {
+				"description": "Указывает преобразования кодирования, применённые к телу сообщения.",
+				"whenToUse1": "Сжатые ответы (gzip, br, deflate)",
+				"mistakes1": "Несоответствие Content-Encoding с фактическим кодированием"
+			},
+			"contentLength": {
+				"description": "Размер тела сообщения в байтах.",
+				"whenToUse1": "Указание размера тела запроса/ответа",
+				"mistakes1": "Неверная длина, вызывающая проблемы соединения"
+			},
+			"cacheControl": {
+				"description": "Директивы для механизмов кеширования в запросах и ответах.",
+				"whenToUse1": "Контроль поведения кеширования (public, private, no-cache, max-age)",
+				"whenToUse2": "Ответы API, которые не должны кешироваться",
+				"mistakes1": "Кеширование чувствительных данных",
+				"mistakes2": "Отсутствие Cache-Control на ответах API"
+			},
+			"etag": {
+				"description": "Тег сущности для валидации кеша.",
+				"whenToUse1": "Условные запросы и валидация кеша",
+				"mistakes1": "Слабые ETag, когда нужны сильные"
+			},
+			"lastModified": {
+				"description": "Указывает дату последнего изменения ресурса.",
+				"whenToUse1": "Для кеширования и условных запросов.",
+				"mistakes1": "Отсутствует для статических ресурсов",
+				"mistakes2": "Некорректный формат даты",
+				"security": "Может раскрывать информацию об обновлениях ресурса."
+			},
+			"ifNoneMatch": {
+				"description": "Условный запрос с использованием ETag для валидации кеша.",
+				"whenToUse1": "Проверка, изменился ли ресурс с последнего запроса",
+				"mistakes1": "Не обработка ответов 304 Not Modified"
+			},
+			"expires": {
+				"description": "Дата/время, после которого ответ считается устаревшим.",
+				"whenToUse1": "Устаревшее окончание кеша (лучше использовать Cache-Control)",
+				"mistakes1": "Использование Expires вместо Cache-Control"
+			},
+			"vary": {
+				"description": "Заголовки, влияющие на выбор ответа.",
+				"whenToUse1": "CORS ответы с credentials и конкретным origin",
+				"mistakes1": "Отсутствие Vary: Origin, когда нужно"
+			},
+			"origin": {
+				"description": "Origin запроса (схема, хост, порт).",
+				"whenToUse1": "CORS запросы из браузеров"
+			},
+			"accessControlAllowOrigin": {
+				"description": "Указывает разрешённые origins для CORS запросов.",
+				"whenToUse1": "CORS-включённые ответы API",
+				"mistakes1": "Использование * с credentials (не разрешено)",
+				"mistakes2": "Не валидация origin на стороне сервера"
+			},
+			"accessControlAllowCredentials": {
+				"description": "Указывает, могут ли быть включены credentials в CORS запросы.",
+				"whenToUse1": "CORS запросы, которые требуют cookies или auth заголовков",
+				"mistakes1": "Установка true с ACAO=\"*\" (невалидно)"
+			},
+			"accessControlAllowHeaders": {
+				"description": "Заголовки, разрешённые в CORS запросах.",
+				"whenToUse1": "CORS preflight ответы"
+			},
+			"accessControlAllowMethods": {
+				"description": "HTTP методы, разрешённые в CORS запросах.",
+				"whenToUse1": "CORS preflight ответы"
+			},
+			"accessControlExposeHeaders": {
+				"description": "Заголовки, доступные JavaScript в CORS ответах.",
+				"whenToUse1": "CORS ответы, экспортирующие кастомные заголовки"
+			},
+			"setCookie": {
+				"description": "Устанавливает cookie в браузере.",
+				"whenToUse1": "Управление сессиями, настройки, отслеживание",
+				"mistakes1": "SameSite=None без Secure",
+				"mistakes2": "Отсутствие HttpOnly для сессионных cookie",
+				"mistakes3": "Не установка соответствующего срока действия",
+				"security": "Используйте HttpOnly для сессионных cookie, Secure для HTTPS-only, и соответствующие значения SameSite."
+			},
+			"cookie": {
+				"description": "Содержит сохранённые cookie для домена.",
+				"whenToUse1": "Отправка cookie с запросами"
+			},
+			"contentSecurityPolicy": {
+				"description": "Контролирует ресурсы, которые браузер может загрузить для предотвращения XSS.",
+				"whenToUse1": "Веб-страницы, которые требуют защиты от XSS",
+				"mistakes1": "Слишком ограниченная политика, ломающая функциональность",
+				"security": "Начните с default-src 'self' и постепенно добавляйте нужные источники."
+			},
+			"strictTransportSecurity": {
+				"description": "Принуждает HTTPS соединения для домена.",
+				"whenToUse1": "Сайты только с HTTPS",
+				"mistakes1": "Включение поддоменов, когда не готовы",
+				"security": "Используйте max-age минимум 31536000 (1 год) и includeSubDomains, когда уместно."
+			},
+			"xFrameOptions": {
+				"description": "Предотвращает атаки clickjacking путём контроля фреймования.",
+				"whenToUse1": "Страницы, которые не должны быть встроены в iframe",
+				"mistakes1": "Использование DENY, когда достаточно SAMEORIGIN"
+			},
+			"xContentTypeOptions": {
+				"description": "Предотвращает атаки MIME type sniffing.",
+				"whenToUse1": "Все HTML ответы",
+				"mistakes1": "Отсутствие на HTML контенте"
+			},
+			"referrerPolicy": {
+				"description": "Контролирует информацию referrer, отправляемую с запросами.",
+				"whenToUse1": "Приложения, чувствительные к конфиденциальности"
+			},
+			"permissionsPolicy": {
+				"description": "Контролирует функции браузера и API, доступные для страницы.",
+				"whenToUse1": "Ограничение доступа к функциям браузера"
+			},
+			"location": {
+				"description": "URL для ответов перенаправления.",
+				"whenToUse1": "3xx ответы перенаправления",
+				"mistakes1": "Относительные URL, когда нужны абсолютные"
+			},
+			"retryAfter": {
+				"description": "Время ожидания перед повторным запросом.",
+				"whenToUse1": "429 Too Many Requests или 503 Service Unavailable"
+			},
+			"xForwardedFor": {
+				"description": "Оригинальный IP адрес клиента за прокси.",
+				"whenToUse1": "Проксированные запросы",
+				"mistakes1": "Доверие без валидации (риск безопасности)"
+			},
+			"xForwardedProto": {
+				"description": "Оригинальный протокол (http/https) за прокси.",
+				"whenToUse1": "Проксированные запросы"
+			},
+			"forwarded": {
+				"description": "Стандартизированная информация о прокси (заменяет X-Forwarded-*).",
+				"whenToUse1": "Проксированные запросы (лучше чем X-Forwarded-*)"
+			},
+			"serverTiming": {
+				"description": "Метрики производительности с сервера.",
+				"whenToUse1": "Мониторинг и отладка производительности"
+			},
+			"pragma": {
+				"description": "Устаревший механизм управления кешированием (HTTP/1.0). Чаще всего используется как no-cache.",
+				"whenToUse1": "Для совместимости со старыми прокси и клиентами, обычно вместе с Cache-Control.",
+				"mistakes1": "Полагаться только на Pragma вместо Cache-Control. Современные браузеры ориентируются именно на Cache-Control."
+			},
+			"date": {
+				"description": "Время формирования ответа на сервере (GMT).",
+				"whenToUse1": "Для отладки кеширования, анализа логов, работы CDN и проверки синхронизации времени.",
+				"mistakes1": "Неверное серверное время приводит к проблемам с TTL, кешем и механизмами подписи (JWT, signed URLs)."
+			},
+			"server": {
+				"description": "Информация о сервере или прокси, который обработал запрос (например envoy, nginx, cloudflare).",
+				"whenToUse1": "Для диагностики инфраструктуры и понимания, кто реально отвечает на запрос — приложение или прокси.",
+				"mistakes1": "Избыточная детализация может помогать атакующим. В production часто скрывают или минимизируют этот заголовок.",
+				"security": "Рекомендуется скрывать или обобщать заголовок Server для снижения утечки информации."
+			},
+			"xEnvoyUpstreamServiceTime": {
+				"description": "Показывает, сколько времени upstream-сервис (бекенд) обрабатывал запрос внутри Envoy (в миллисекундах).",
+				"whenToUse1": "Для анализа производительности и отделения задержек бекенда от сетевых и прокси-задержек.",
+				"mistakes1": "Путать с общим временем ответа в браузере — этот заголовок не включает сетевые задержки и клиентскую обработку."
+			},
+			"xXssProtection": {
+				"description": "Устаревший механизм XSS-защиты в некоторых браузерах.",
+				"whenToUse1": "Практически не рекомендуется. Современные браузеры игнорируют или не поддерживают этот заголовок.",
+				"mistakes1": "Считать, что он реально защищает от XSS. Реальная защита — это CSP, корректный escaping и безопасный рендеринг.",
+				"security": "Часто устанавливают X-XSS-Protection: 0, чтобы отключить проблемные старые фильтры."
+			},
+			"referer": {
+				"description": "Передаёт URL страницы-источника запроса.",
+				"whenToUse1": "Для аналитики и логирования.",
+				"mistakes1": "Использование как механизма безопасности",
+				"mistakes2": "Ожидание заголовка при строгой Referrer-Policy",
+				"security": "Может раскрывать чувствительные URL."
+			},
+			"userAgent": {
+				"description": "Идентифицирует клиент или браузер.",
+				"whenToUse1": "Для отладки и аналитики.",
+				"mistakes1": "Бизнес-логика на основе User-Agent",
+				"security": "Легко подделывается."
+			}
+		},
+		"whatIs": "Что такое Headers Inspector?",
+		"whatIsDescription": "Headers Inspector — локальный инструмент, который превращает HTTP-заголовки запроса или ответа в понятный список с пояснениями и типовыми ошибками. Помогает быстро находить проблемы в CORS, кешировании, Content-Type и cookies при отладке API и QA-тестировании — прямо в браузере.",
+		"whatYouCanDo": "Что можно сделать в инструменте",
+		"whatYouCanDo1": "Вставить заголовки и мгновенно распарсить их в пары ключ/значение",
+		"whatYouCanDo2": "Переключать режим Запрос / Ответ",
+		"whatYouCanDo3": "Видеть найденные проблемы (error/warning/info) и рекомендации",
+		"whatYouCanDo4": "Открывать каждый заголовок: назначение, когда использовать, типовые ошибки",
+		"whatYouCanDo5": "Копировать имя, значение или строку Header: value",
+		"privacy": "Приватность",
+		"privacyText": "Все данные обрабатываются локально в браузере. Данные не отправляются на сервер."
 	},
 	"privacy": {
 		"title": "Конфиденциальность - QA Toolbox",
