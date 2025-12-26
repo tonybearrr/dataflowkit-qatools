@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { locale, tReactive, tStringReactive, getPath, type Locale } from '$lib/i18n';
-	import { Database, CircleCheckBig, BookOpen, Braces, FileText, Cookie, Shield } from 'lucide-svelte';
+	import { Database, CircleCheckBig, BookOpen, Braces, FileText, Cookie, Shield, Wrench } from 'lucide-svelte';
 
 	const lang = $derived(($page.params.lang || 'en') as Locale);
 	const baseUrl = 'https://qatools.dataflowkit.dev';
@@ -221,5 +221,15 @@
 			</div>
 		</a>
 
+		<div
+			class="p-6 rounded-lg border border-dashed border-[var(--color-border)] bg-[var(--color-bg-secondary)]/50 flex flex-col items-center justify-center text-center"
+		>
+			<div
+				class="w-12 h-12 rounded-lg bg-[var(--color-bg-tertiary)] flex items-center justify-center mb-4"
+			>
+				<Wrench class="w-6 h-6 text-[var(--color-text-muted)] opacity-50" />
+			</div>
+			<p class="text-sm text-[var(--color-text-muted)]">{tStringReactive('common.moreToolsComing', $locale)}</p>
+		</div>
 	</div>
 </div>
