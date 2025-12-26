@@ -20,7 +20,9 @@ export interface Translations {
 		testDataGenerator: string;
 		apiResponseValidator: string;
 		statusCodeReference: string;
-		userAgentParser: string;
+		headersInspector: string;
+		cookieDebugger: string;
+		authDebugger: string;
 	};
 	home: {
 		title: string;
@@ -40,7 +42,22 @@ export interface Translations {
 			description: string;
 			tags: string[];
 		};
-		userAgentParser: {
+		headersInspector: {
+			title: string;
+			description: string;
+			tags: string[];
+		};
+		cookieDebugger: {
+			title: string;
+			description: string;
+			tags: string[];
+		};
+		authDebugger: {
+			title: string;
+			description: string;
+			tags: string[];
+		};
+		payloadBuilder: {
 			title: string;
 			description: string;
 			tags: string[];
@@ -139,9 +156,19 @@ export interface Translations {
 		title: string;
 		description: string;
 	};
-	userAgentParser: {
+	headersInspector: {
 		title: string;
 		description: string;
+	};
+	cookieDebugger: {
+		title: string;
+		description: string;
+	};
+	authDebugger: {
+		title: string;
+		description: string;
+		heading: string;
+		subtitle: string;
 	};
 	privacy: {
 		title: string;

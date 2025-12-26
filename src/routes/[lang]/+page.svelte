@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { locale, tReactive, tStringReactive, getPath, type Locale } from '$lib/i18n';
-	import { Database, CircleCheckBig, BookOpen, Monitor, Braces, FileText, Cookie } from 'lucide-svelte';
+	import { Database, CircleCheckBig, BookOpen, Braces, FileText, Cookie, Shield } from 'lucide-svelte';
 
 	const lang = $derived(($page.params.lang || 'en') as Locale);
 	const baseUrl = 'https://qatools.dataflowkit.dev';
@@ -144,32 +144,6 @@
 		</a>
 
 		<a
-			href={getPath('/user-agent-parser', lang)}
-			class="group p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-purple-400 transition-all hover:shadow-lg hover:shadow-purple-400/10"
-		>
-			<div
-				class="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center mb-4 group-hover:bg-purple-500/15 transition-colors"
-			>
-				<Monitor class="w-6 h-6 text-purple-400" />
-			</div>
-			<h2 class="text-lg font-semibold mb-2 group-hover:text-purple-400 transition-colors">
-				{tStringReactive('home.userAgentParser.title', $locale)}
-			</h2>
-			<p class="text-sm text-[var(--color-text-muted)]">
-				{tStringReactive('home.userAgentParser.description', $locale)}
-			</p>
-			<div class="mt-4 flex flex-wrap gap-2">
-				{#each (tReactive('home.userAgentParser.tags', $locale) as string[]) as tag}
-					<span
-						class="text-xs px-2 py-1 rounded bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)]"
-					>
-						{tag}
-					</span>
-				{/each}
-			</div>
-		</a>
-
-		<a
 			href={getPath('/headers-inspector', lang)}
 			class="group p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-indigo-400 transition-all hover:shadow-lg hover:shadow-indigo-400/10"
 		>
@@ -212,6 +186,32 @@
 			</p>
 			<div class="mt-4 flex flex-wrap gap-2">
 				{#each (tReactive('home.cookieDebugger.tags', $locale) as string[]) as tag}
+					<span
+						class="text-xs px-2 py-1 rounded bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)]"
+					>
+						{tag}
+					</span>
+				{/each}
+			</div>
+		</a>
+
+		<a
+			href={getPath('/auth-debugger', lang)}
+			class="group p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-pink-400 transition-all hover:shadow-lg hover:shadow-pink-400/10"
+		>
+			<div
+				class="w-12 h-12 rounded-lg bg-pink-500/10 flex items-center justify-center mb-4 group-hover:bg-pink-500/15 transition-colors"
+			>
+				<Shield class="w-6 h-6 text-pink-400" />
+			</div>
+			<h2 class="text-lg font-semibold mb-2 group-hover:text-pink-400 transition-colors">
+				{tStringReactive('home.authDebugger.title', $locale)}
+			</h2>
+			<p class="text-sm text-[var(--color-text-muted)]">
+				{tStringReactive('home.authDebugger.description', $locale)}
+			</p>
+			<div class="mt-4 flex flex-wrap gap-2">
+				{#each (tReactive('home.authDebugger.tags', $locale) as string[]) as tag}
 					<span
 						class="text-xs px-2 py-1 rounded bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)]"
 					>

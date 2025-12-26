@@ -61,31 +61,31 @@
 						href={getPath('/api-response-validator', langFromPath)}
 						class="text-sm transition-colors {$page.url.pathname.includes('/api-response-validator') ? 'text-[var(--color-text)]' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'}"
 					>
-						{tStringReactive('nav.apiResponseValidator', $locale)}
+						API Validator
 					</a>
 					<a
 						href={getPath('/status-code-reference', langFromPath)}
 						class="text-sm transition-colors {$page.url.pathname.includes('/status-code-reference') ? 'text-[var(--color-text)]' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'}"
 					>
-						{tStringReactive('nav.statusCodeReference', $locale)}
+						Status Codes
 					</a>
 					<a
 						href={getPath('/headers-inspector', langFromPath)}
 						class="text-sm transition-colors {$page.url.pathname.includes('/headers-inspector') ? 'text-[var(--color-text)]' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'}"
 					>
-						{tStringReactive('nav.headersInspector', $locale)}
-					</a>
-					<a
-						href={getPath('/user-agent-parser', langFromPath)}
-						class="text-sm transition-colors {$page.url.pathname.includes('/user-agent-parser') ? 'text-[var(--color-text)]' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'}"
-					>
-						{tStringReactive('nav.userAgentParser', $locale)}
+						Headers
 					</a>
 					<a
 						href={getPath('/cookie-debugger', langFromPath)}
 						class="text-sm transition-colors {$page.url.pathname.includes('/cookie-debugger') ? 'text-[var(--color-text)]' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'}"
 					>
-						{tStringReactive('nav.cookieDebugger', $locale)}
+						Cookies
+					</a>
+					<a
+						href={getPath('/auth-debugger', langFromPath)}
+						class="text-sm transition-colors {$page.url.pathname.includes('/auth-debugger') ? 'text-[var(--color-text)]' : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'}"
+					>
+						Auth Debugger
 					</a>
 				</nav>
 
@@ -150,28 +150,35 @@
 							onclick={closeMobileMenu}
 							class="px-4 py-2 text-sm transition-colors rounded hover:bg-[var(--color-bg-tertiary)] {$page.url.pathname.includes('/api-response-validator') ? 'text-[var(--color-text)] bg-[var(--color-bg-tertiary)]' : 'text-[var(--color-text-muted)]'}"
 						>
-							{tStringReactive('nav.apiResponseValidator', $locale)}
+							API Validator
 						</a>
 						<a
 							href={getPath('/status-code-reference', langFromPath)}
 							onclick={closeMobileMenu}
 							class="px-4 py-2 text-sm transition-colors rounded hover:bg-[var(--color-bg-tertiary)] {$page.url.pathname.includes('/status-code-reference') ? 'text-[var(--color-text)] bg-[var(--color-bg-tertiary)]' : 'text-[var(--color-text-muted)]'}"
 						>
-							{tStringReactive('nav.statusCodeReference', $locale)}
+							Status Codes
 						</a>
 						<a
-							href={getPath('/user-agent-parser', langFromPath)}
+							href={getPath('/headers-inspector', langFromPath)}
 							onclick={closeMobileMenu}
-							class="px-4 py-2 text-sm transition-colors rounded hover:bg-[var(--color-bg-tertiary)] {$page.url.pathname.includes('/user-agent-parser') ? 'text-[var(--color-text)] bg-[var(--color-bg-tertiary)]' : 'text-[var(--color-text-muted)]'}"
+							class="px-4 py-2 text-sm transition-colors rounded hover:bg-[var(--color-bg-tertiary)] {$page.url.pathname.includes('/headers-inspector') ? 'text-[var(--color-text)] bg-[var(--color-bg-tertiary)]' : 'text-[var(--color-text-muted)]'}"
 						>
-							{tStringReactive('nav.userAgentParser', $locale)}
+							Headers
 						</a>
 						<a
 							href={getPath('/cookie-debugger', langFromPath)}
 							onclick={closeMobileMenu}
 							class="px-4 py-2 text-sm transition-colors rounded hover:bg-[var(--color-bg-tertiary)] {$page.url.pathname.includes('/cookie-debugger') ? 'text-[var(--color-text)] bg-[var(--color-bg-tertiary)]' : 'text-[var(--color-text-muted)]'}"
 						>
-							{tStringReactive('nav.cookieDebugger', $locale)}
+							Cookies
+						</a>
+						<a
+							href={getPath('/auth-debugger', langFromPath)}
+							onclick={closeMobileMenu}
+							class="px-4 py-2 text-sm transition-colors rounded hover:bg-[var(--color-bg-tertiary)] {$page.url.pathname.includes('/auth-debugger') ? 'text-[var(--color-text)] bg-[var(--color-bg-tertiary)]' : 'text-[var(--color-text-muted)]'}"
+						>
+							Auth Debugger
 						</a>
 					</div>
 				</nav>

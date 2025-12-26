@@ -4,7 +4,7 @@
 
 	$effect(() => {
 		const lang = $page.params.lang || 'en';
-		redirect(302, `/${lang}/cookie-debugger`);
+		redirect(302, `/${lang}/auth-debugger`);
 	});
 </script>
 
