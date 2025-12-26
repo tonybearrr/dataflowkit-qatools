@@ -19,7 +19,8 @@
 		"apiResponseValidator": "Валидатор API",
 		"statusCodeReference": "Статус-коды",
 		"userAgentParser": "User Agent",
-		"headersInspector": "Headers"
+		"headersInspector": "Headers",
+		"cookieDebugger": "Cookies"
 	},
 	"home": {
 		"title": "QA Toolbox",
@@ -28,6 +29,11 @@
 			"title": "Генератор тестовых данных",
 			"description": "Генерируйте тестовые данные: email, номера телефонов, UUID, имена, адреса и другое.",
 			"tags": ["Email", "Телефон", "UUID"]
+		},
+		"payloadBuilder": {
+			"title": "Payload Builder + Breaker",
+			"description": "Создавайте и ломайте JSON payload'ы для тестирования API. Создавайте невалидные варианты для проверки валидации.",
+			"tags": ["JSON", "Тестирование API", "Валидация"]
 		},
 		"apiResponseValidator": {
 			"title": "Валидатор ответов API",
@@ -48,6 +54,11 @@
 			"title": "Инспектор заголовков",
 			"description": "Парсинг и анализ HTTP заголовков. Поймите их назначение и обнаружьте проблемы конфигурации.",
 			"tags": ["HTTP", "Заголовки", "CORS"]
+		},
+		"cookieDebugger": {
+			"title": "Cookie Debugger",
+			"description": "Парсинг и отладка файлов cookie локально. Поймите атрибуты, выявляйте проблемы и симулируйте отправку.",
+			"tags": ["HTTP", "Cookies", "Безопасность"]
 		}
 	},
 	"testDataGenerator": {
@@ -807,6 +818,92 @@
 		"whatYouCanDo5": "Копировать имя, значение или строку Header: value",
 		"privacy": "Приватность",
 		"privacyText": "Все данные обрабатываются локально в браузере. Данные не отправляются на сервер."
+	},
+	"cookieDebugger": {
+		"title": "Cookie Debugger - QA Toolbox",
+		"description": "Парсинг и отладка cookies локально. Понимание атрибутов cookie, обнаружение проблем и симуляция поведения отправки cookie.",
+		"heading": "Cookie Debugger",
+		"subtitle": "Парсинг и отладка cookies локально в вашем браузере.",
+		"modeSetCookie": "Set-Cookie (Ответ)",
+		"modeCookie": "Cookie (Запрос)",
+		"inputLabel": "Сырые Cookie заголовки",
+		"placeholder": "Set-Cookie: session=abc123; Secure; HttpOnly; SameSite=Lax; Path=/; Max-Age=3600",
+		"autoParse": "Авто-парсинг",
+		"parse": "Парсить",
+		"reset": "Сбросить",
+		"example": "Пример",
+		"exampleSameSiteNone": "SameSite=None без Secure",
+		"exampleCrossSite": "Cross-site cookie заблокирован",
+		"exampleValidSession": "Валидный session cookie",
+		"exampleDomainMismatch": "Несоответствие домена",
+		"exampleMultiple": "Несколько cookies",
+		"exampleCookieHeader": "Cookie заголовок",
+		"cookiesList": "Cookies",
+		"showOnlyIssues": "Только проблемы",
+		"noCookies": "Cookies еще не распарсены. Вставьте cookie заголовки выше и нажмите Парсить.",
+		"context": {
+			"title": "Контекст запроса",
+			"siteUrl": "URL сайта",
+			"requestUrl": "URL запроса",
+			"method": "Метод",
+			"isHttps": "HTTPS",
+			"isTopLevelNavigation": "Top-level навигация",
+			"isIframe": "В iframe",
+			"isCrossSite": "Cross-site",
+			"yes": "Да",
+			"no": "Нет",
+			"sameSiteNote": "Определение same-site основано на hostname в MVP."
+		},
+		"details": {
+			"willBeSent": "Cookie будет отправлено",
+			"willNotBeSent": "Cookie НЕ будет отправлено",
+			"warnings": "Предупреждения",
+			"attributes": "Атрибуты",
+			"hostOnly": "Host-only",
+			"notSet": "Не установлено",
+			"quickActions": "Быстрые действия",
+			"copyName": "Копировать название",
+			"copyValue": "Копировать значение",
+			"copyFull": "Копировать полную строку",
+			"selectCookie": "Выберите cookie для просмотра деталей"
+		},
+		"issues": {
+			"detectedIssues": "Обнаруженные проблемы",
+			"showDetectedIssues": "Показать обнаруженные проблемы",
+			"errors": "Ошибки",
+			"warnings": "Предупреждения",
+			"info": "Инфо",
+			"hideIssues": "Скрыть проблемы",
+			"showOnlyErrors": "Показать только ошибки",
+			"sameSiteNoneNoSecure": "SameSite=None требует флаг Secure для работы в современных браузерах.",
+			"domainIsIp": "Атрибут Domain является IP-адресом. Cookies с IP-доменами могут работать некорректно.",
+			"domainInvalid": "Формат домена кажется невалидным.",
+			"noSameSite": "Атрибут SameSite не установлен. Браузеры могут использовать Lax по умолчанию, но поведение может отличаться.",
+			"expired": "Cookie просрочено и будет удалено браузером.",
+			"maxAgeZero": "Max-Age равен нулю или отрицательный. Cookie будет удалено немедленно.",
+			"missingHttpOnly": "Session-подобный cookie не имеет флага HttpOnly, который помогает предотвратить XSS-атаки.",
+			"bothExpiresMaxAge": "Установлены и Expires, и Max-Age. Max-Age имеет приоритет.",
+			"noPath": "Path не установлен. По умолчанию используется директория пути запроса.",
+			"domainMismatch": "Домен cookie не соответствует URL сайта. Cookie может не быть отправлено."
+		},
+		"simulation": {
+			"willBeSent": "Cookie будет отправлено с этим запросом.",
+			"secureNotHttps": "Cookie имеет флаг Secure, но запрос не HTTPS.",
+			"expired": "Cookie просрочено.",
+			"maxAgeZero": "Max-Age cookie равен нулю или отрицательный.",
+			"domainMismatch": "Домен cookie не соответствует URL запроса.",
+			"pathMismatch": "Путь cookie не соответствует пути запроса.",
+			"sameSiteStrictCrossSite": "SameSite=Strict блокирует cross-site запросы.",
+			"sameSiteLaxCrossSite": "SameSite=Lax позволяет только cross-site top-level навигационные GET запросы.",
+			"sameSiteNoneNoSecure": "SameSite=None требует флаг Secure.",
+			"sameSiteNoneNotHttps": "SameSite=None требует HTTPS."
+		},
+		"whatIs": "Что такое Cookie Debugger?",
+		"whatIsDescription": "Cookie Debugger — это локальный инструмент, который парсит Set-Cookie и Cookie заголовки, объясняет атрибуты cookie (Domain, Path, Secure, HttpOnly, SameSite, Max-Age/Expires), обнаруживает типовые проблемы и симулирует, будет ли cookie отправлено для заданного контекста запроса. Вся обработка выполняется локально в вашем браузере.",
+		"commonIssues": "Типовые проблемы с cookies",
+		"commonIssuesDescription": "Типовые проблемы с cookies включают: SameSite=None без флага Secure (не будет работать в современных браузерах), несоответствия доменов, просроченные cookies, отсутствие HttpOnly для session cookies и некорректные настройки SameSite для cross-site запросов.",
+		"privacy": "Приватность",
+		"privacyText": "Весь парсинг и симуляция выполняются локально в вашем браузере. Данные никуда не отправляются."
 	},
 	"privacy": {
 		"title": "Конфиденциальность - QA Toolbox",

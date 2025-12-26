@@ -19,7 +19,8 @@
 		"apiResponseValidator": "Валідатор API",
 		"statusCodeReference": "Статус-коди",
 		"userAgentParser": "User Agent",
-		"headersInspector": "Headers"
+		"headersInspector": "Headers",
+		"cookieDebugger": "Cookies"
 	},
 	"home": {
 		"title": "QA Toolbox",
@@ -28,6 +29,11 @@
 			"title": "Генератор тестових даних",
 			"description": "Генеруйте тестові дані: email, номери телефонів, UUID, імена, адреси та інше.",
 			"tags": ["Email", "Телефон", "UUID"]
+		},
+		"payloadBuilder": {
+			"title": "Payload Builder + Breaker",
+			"description": "Створюйте та ламайте JSON payload'и для тестування API. Створюйте невалідні варіанти для перевірки валідації.",
+			"tags": ["JSON", "Тестування API", "Валідація"]
 		},
 		"apiResponseValidator": {
 			"title": "Валідатор відповідей API",
@@ -48,6 +54,11 @@
 			"title": "Інспектор заголовків",
 			"description": "Парсинг та аналіз HTTP заголовків. Зрозумійте їх призначення та виявіть проблеми конфігурації.",
 			"tags": ["HTTP", "Заголовки", "CORS"]
+		},
+		"cookieDebugger": {
+			"title": "Cookie Debugger",
+			"description": "Парсинг та налагодження файлів cookie локально. Зрозумійте атрибути, виявляйте проблеми та симулюйте надсилання.",
+			"tags": ["HTTP", "Cookies", "Безпека"]
 		}
 	},
 	"testDataGenerator": {
@@ -813,6 +824,92 @@
 		"whatYouCanDo5": "Скопіювати назву, значення або рядок Заголовок: значення",
 		"privacy": "Приватність",
 		"privacyText": "Усі дані обробляються локально у вашому браузері. Дані не відправляються на сервер."
+	},
+	"cookieDebugger": {
+		"title": "Cookie Debugger - QA Toolbox",
+		"description": "Парсинг та дебаг cookies локально. Розуміння атрибутів cookie, виявлення проблем та симуляція поведінки відправки cookie.",
+		"heading": "Cookie Debugger",
+		"subtitle": "Парсинг та дебаг cookies локально у вашому браузері.",
+		"modeSetCookie": "Set-Cookie (Відповідь)",
+		"modeCookie": "Cookie (Запит)",
+		"inputLabel": "Сирі Cookie заголовки",
+		"placeholder": "Set-Cookie: session=abc123; Secure; HttpOnly; SameSite=Lax; Path=/; Max-Age=3600",
+		"autoParse": "Авто-парсинг",
+		"parse": "Парсити",
+		"reset": "Скинути",
+		"example": "Приклад",
+		"exampleSameSiteNone": "SameSite=None без Secure",
+		"exampleCrossSite": "Cross-site cookie заблоковано",
+		"exampleValidSession": "Валідний session cookie",
+		"exampleDomainMismatch": "Невідповідність домену",
+		"exampleMultiple": "Кілька cookies",
+		"exampleCookieHeader": "Cookie заголовок",
+		"cookiesList": "Cookies",
+		"showOnlyIssues": "Тільки проблеми",
+		"noCookies": "Cookies ще не розпарсені. Вставте cookie заголовки вище та натисніть Парсити.",
+		"context": {
+			"title": "Контекст запиту",
+			"siteUrl": "URL сайту",
+			"requestUrl": "URL запиту",
+			"method": "Метод",
+			"isHttps": "HTTPS",
+			"isTopLevelNavigation": "Top-level навігація",
+			"isIframe": "В iframe",
+			"isCrossSite": "Cross-site",
+			"yes": "Так",
+			"no": "Ні",
+			"sameSiteNote": "Визначення same-site базується на hostname в MVP."
+		},
+		"details": {
+			"willBeSent": "Cookie буде відправлено",
+			"willNotBeSent": "Cookie НЕ буде відправлено",
+			"warnings": "Попередження",
+			"attributes": "Атрибути",
+			"hostOnly": "Host-only",
+			"notSet": "Не встановлено",
+			"quickActions": "Швидкі дії",
+			"copyName": "Копіювати назву",
+			"copyValue": "Копіювати значення",
+			"copyFull": "Копіювати повний рядок",
+			"selectCookie": "Виберіть cookie для перегляду деталей"
+		},
+		"issues": {
+			"detectedIssues": "Виявлені проблеми",
+			"showDetectedIssues": "Показати виявлені проблеми",
+			"errors": "Помилки",
+			"warnings": "Попередження",
+			"info": "Інфо",
+			"hideIssues": "Приховати проблеми",
+			"showOnlyErrors": "Показати тільки помилки",
+			"sameSiteNoneNoSecure": "SameSite=None вимагає прапорець Secure для роботи в сучасних браузерах.",
+			"domainIsIp": "Атрибут Domain є IP-адресою. Cookies з IP-доменами можуть працювати некоректно.",
+			"domainInvalid": "Формат домену здається невалідним.",
+			"noSameSite": "Атрибут SameSite не встановлено. Браузери можуть використовувати Lax за замовчуванням, але поведінка може відрізнятися.",
+			"expired": "Cookie прострочено і буде видалено браузером.",
+			"maxAgeZero": "Max-Age дорівнює нулю або від'ємний. Cookie буде видалено негайно.",
+			"missingHttpOnly": "Session-подібний cookie не має прапорця HttpOnly, що допомагає запобігти XSS-атакам.",
+			"bothExpiresMaxAge": "Встановлено і Expires, і Max-Age. Max-Age має пріоритет.",
+			"noPath": "Path не встановлено. За замовчуванням використовується директорія шляху запиту.",
+			"domainMismatch": "Домен cookie не відповідає URL сайту. Cookie може не бути відправлено."
+		},
+		"simulation": {
+			"willBeSent": "Cookie буде відправлено з цим запитом.",
+			"secureNotHttps": "Cookie має прапорець Secure, але запит не HTTPS.",
+			"expired": "Cookie прострочено.",
+			"maxAgeZero": "Max-Age cookie дорівнює нулю або від'ємний.",
+			"domainMismatch": "Домен cookie не відповідає URL запиту.",
+			"pathMismatch": "Шлях cookie не відповідає шляху запиту.",
+			"sameSiteStrictCrossSite": "SameSite=Strict блокує cross-site запити.",
+			"sameSiteLaxCrossSite": "SameSite=Lax дозволяє тільки cross-site top-level навігаційні GET запити.",
+			"sameSiteNoneNoSecure": "SameSite=None вимагає прапорець Secure.",
+			"sameSiteNoneNotHttps": "SameSite=None вимагає HTTPS."
+		},
+		"whatIs": "Що таке Cookie Debugger?",
+		"whatIsDescription": "Cookie Debugger — це локальний інструмент, який парсить Set-Cookie та Cookie заголовки, пояснює атрибути cookie (Domain, Path, Secure, HttpOnly, SameSite, Max-Age/Expires), виявляє типові проблеми та симулює, чи буде cookie відправлено для заданого контексту запиту. Уся обробка відбувається локально у вашому браузері.",
+		"commonIssues": "Типові проблеми з cookies",
+		"commonIssuesDescription": "Типові проблеми з cookies включають: SameSite=None без прапорця Secure (не працюватиме в сучасних браузерах), невідповідності доменів, прострочені cookies, відсутність HttpOnly для session cookies та некоректні налаштування SameSite для cross-site запитів.",
+		"privacy": "Приватність",
+		"privacyText": "Усі парсинг та симуляція виконуються локально у вашому браузері. Дані нікуди не надсилаються."
 	},
 	"privacy": {
 		"title": "Конфіденційність - QA Toolbox",

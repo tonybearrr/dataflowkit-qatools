@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { locale, tReactive, tStringReactive, getPath, type Locale } from '$lib/i18n';
-	import { Database, CircleCheckBig, BookOpen, Monitor, Braces, FileText } from 'lucide-svelte';
+	import { Database, CircleCheckBig, BookOpen, Monitor, Braces, FileText, Cookie } from 'lucide-svelte';
 
 	const lang = $derived(($page.params.lang || 'en') as Locale);
 	const baseUrl = 'https://qatools.dataflowkit.dev';
@@ -67,29 +67,27 @@
 
 		<a
 			href={getPath('/payload', lang)}
-			class="group p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-purple-400 transition-all hover:shadow-lg hover:shadow-purple-400/10"
+			class="group p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-red-400 transition-all hover:shadow-lg hover:shadow-red-400/10"
 		>
 			<div
-				class="w-12 h-12 rounded-lg bg-purple-500/10 flex items-center justify-center mb-4 group-hover:bg-purple-500/15 transition-colors"
+				class="w-12 h-12 rounded-lg bg-red-500/10 flex items-center justify-center mb-4 group-hover:bg-red-500/15 transition-colors"
 			>
-				<Braces class="w-6 h-6 text-purple-400" />
+				<Braces class="w-6 h-6 text-red-400" />
 			</div>
-			<h2 class="text-lg font-semibold mb-2 group-hover:text-purple-400 transition-colors">
-				Payload Builder
+			<h2 class="text-lg font-semibold mb-2 group-hover:text-red-400 transition-colors">
+				{tStringReactive('home.payloadBuilder.title', $locale)}
 			</h2>
 			<p class="text-sm text-[var(--color-text-muted)]">
-				Build and break JSON payloads for API testing
+				{tStringReactive('home.payloadBuilder.description', $locale)}
 			</p>
 			<div class="mt-4 flex flex-wrap gap-2">
-				<span class="text-xs px-2 py-1 rounded bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)]">
-					JSON
-				</span>
-				<span class="text-xs px-2 py-1 rounded bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)]">
-					API Testing
-				</span>
-				<span class="text-xs px-2 py-1 rounded bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)]">
-					Validation
-				</span>
+				{#each (tReactive('home.payloadBuilder.tags', $locale) as string[]) as tag}
+					<span
+						class="text-xs px-2 py-1 rounded bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)]"
+					>
+						{tag}
+					</span>
+				{/each}
 			</div>
 		</a>
 
@@ -188,6 +186,32 @@
 			</p>
 			<div class="mt-4 flex flex-wrap gap-2">
 				{#each (tReactive('home.headersInspector.tags', $locale) as string[]) as tag}
+					<span
+						class="text-xs px-2 py-1 rounded bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)]"
+					>
+						{tag}
+					</span>
+				{/each}
+			</div>
+		</a>
+
+		<a
+			href={getPath('/cookie-debugger', lang)}
+			class="group p-6 rounded-lg border border-[var(--color-border)] bg-[var(--color-bg-secondary)] hover:border-orange-400 transition-all hover:shadow-lg hover:shadow-orange-400/10"
+		>
+			<div
+				class="w-12 h-12 rounded-lg bg-orange-500/10 flex items-center justify-center mb-4 group-hover:bg-orange-500/15 transition-colors"
+			>
+				<Cookie class="w-6 h-6 text-orange-400" />
+			</div>
+			<h2 class="text-lg font-semibold mb-2 group-hover:text-orange-400 transition-colors">
+				{tStringReactive('home.cookieDebugger.title', $locale)}
+			</h2>
+			<p class="text-sm text-[var(--color-text-muted)]">
+				{tStringReactive('home.cookieDebugger.description', $locale)}
+			</p>
+			<div class="mt-4 flex flex-wrap gap-2">
+				{#each (tReactive('home.cookieDebugger.tags', $locale) as string[]) as tag}
 					<span
 						class="text-xs px-2 py-1 rounded bg-[var(--color-bg-tertiary)] text-[var(--color-text-muted)]"
 					>

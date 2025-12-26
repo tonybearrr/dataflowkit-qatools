@@ -19,7 +19,8 @@
 		"apiResponseValidator": "API Validator",
 		"statusCodeReference": "Status Codes",
 		"userAgentParser": "User Agent",
-		"headersInspector": "Headers"
+		"headersInspector": "Headers",
+		"cookieDebugger": "Cookies"
 	},
 	"home": {
 		"title": "QA Toolbox",
@@ -28,6 +29,11 @@
 			"title": "Test Data Generator",
 			"description": "Generate test data: emails, phone numbers, UUIDs, names, addresses, and more.",
 			"tags": ["Email", "Phone", "UUID"]
+		},
+		"payloadBuilder": {
+			"title": "Payload Builder + Breaker",
+			"description": "Build and break JSON payloads for API testing. Create invalid variants to test validation.",
+			"tags": ["JSON", "API Testing", "Validation"]
 		},
 		"apiResponseValidator": {
 			"title": "API Response Validator",
@@ -48,6 +54,11 @@
 			"title": "Headers Inspector",
 			"description": "Parse and analyze HTTP headers. Understand their purpose and detect configuration issues.",
 			"tags": ["HTTP", "Headers", "CORS"]
+		},
+		"cookieDebugger": {
+			"title": "Cookie Debugger",
+			"description": "Parse and debug cookies locally. Understand attributes, detect issues, and simulate sending.",
+			"tags": ["HTTP", "Cookies", "Security"]
 		}
 	},
 	"testDataGenerator": {
@@ -813,6 +824,92 @@
 		"whatYouCanDo5": "Copy header name/value or full Header: value line",
 		"privacy": "Privacy",
 		"privacyText": "All data is processed locally in your browser. No data is sent to any server."
+	},
+	"cookieDebugger": {
+		"title": "Cookie Debugger - QA Toolbox",
+		"description": "Parse and debug cookies locally. Understand cookie attributes, detect issues, and simulate cookie sending behavior.",
+		"heading": "Cookie Debugger",
+		"subtitle": "Parse and debug cookies locally in your browser.",
+		"modeSetCookie": "Set-Cookie (Response)",
+		"modeCookie": "Cookie (Request)",
+		"inputLabel": "Raw Cookie Headers",
+		"placeholder": "Set-Cookie: session=abc123; Secure; HttpOnly; SameSite=Lax; Path=/; Max-Age=3600",
+		"autoParse": "Auto-parse",
+		"parse": "Parse",
+		"reset": "Reset",
+		"example": "Example",
+		"exampleSameSiteNone": "SameSite=None without Secure",
+		"exampleCrossSite": "Cross-site cookie blocked",
+		"exampleValidSession": "Valid session cookie",
+		"exampleDomainMismatch": "Domain mismatch",
+		"exampleMultiple": "Multiple cookies",
+		"exampleCookieHeader": "Cookie header",
+		"cookiesList": "Cookies",
+		"showOnlyIssues": "Issues only",
+		"noCookies": "No cookies parsed yet. Paste cookie headers above and click Parse.",
+		"context": {
+			"title": "Request Context",
+			"siteUrl": "Site URL",
+			"requestUrl": "Request URL",
+			"method": "Method",
+			"isHttps": "HTTPS",
+			"isTopLevelNavigation": "Top-level navigation",
+			"isIframe": "In iframe",
+			"isCrossSite": "Cross-site",
+			"yes": "Yes",
+			"no": "No",
+			"sameSiteNote": "Same-site detection is hostname-based in MVP."
+		},
+		"details": {
+			"willBeSent": "Cookie will be sent",
+			"willNotBeSent": "Cookie will NOT be sent",
+			"warnings": "Warnings",
+			"attributes": "Attributes",
+			"hostOnly": "Host-only",
+			"notSet": "Not set",
+			"quickActions": "Quick Actions",
+			"copyName": "Copy name",
+			"copyValue": "Copy value",
+			"copyFull": "Copy full line",
+			"selectCookie": "Select a cookie to view details"
+		},
+		"issues": {
+			"detectedIssues": "Detected Issues",
+			"showDetectedIssues": "Show detected issues",
+			"errors": "Errors",
+			"warnings": "Warnings",
+			"info": "Info",
+			"hideIssues": "Hide issues",
+			"showOnlyErrors": "Show only errors",
+			"sameSiteNoneNoSecure": "SameSite=None requires the Secure flag to work in modern browsers.",
+			"domainIsIp": "Domain attribute is an IP address. Cookies with IP domains may not work as expected.",
+			"domainInvalid": "Domain format appears invalid.",
+			"noSameSite": "SameSite attribute is not set. Browsers may default to Lax, but behavior can vary.",
+			"expired": "Cookie has expired and will be removed by the browser.",
+			"maxAgeZero": "Max-Age is zero or negative. Cookie will be removed immediately.",
+			"missingHttpOnly": "Session-like cookie is missing HttpOnly flag, which helps prevent XSS attacks.",
+			"bothExpiresMaxAge": "Both Expires and Max-Age are set. Max-Age takes precedence.",
+			"noPath": "Path is not set. Defaults to the request path directory.",
+			"domainMismatch": "Cookie domain does not match the site URL. Cookie may not be sent."
+		},
+		"simulation": {
+			"willBeSent": "Cookie will be sent with this request.",
+			"secureNotHttps": "Cookie has Secure flag but request is not HTTPS.",
+			"expired": "Cookie has expired.",
+			"maxAgeZero": "Cookie Max-Age is zero or negative.",
+			"domainMismatch": "Cookie domain does not match request URL.",
+			"pathMismatch": "Cookie path does not match request path.",
+			"sameSiteStrictCrossSite": "SameSite=Strict blocks cross-site requests.",
+			"sameSiteLaxCrossSite": "SameSite=Lax only allows cross-site top-level navigation GET requests.",
+			"sameSiteNoneNoSecure": "SameSite=None requires Secure flag.",
+			"sameSiteNoneNotHttps": "SameSite=None requires HTTPS."
+		},
+		"whatIs": "What is Cookie Debugger?",
+		"whatIsDescription": "Cookie Debugger is a local tool that parses Set-Cookie and Cookie headers, explains cookie attributes (Domain, Path, Secure, HttpOnly, SameSite, Max-Age/Expires), detects common issues, and simulates whether a cookie will be sent for a given request context. All processing happens locally in your browser.",
+		"commonIssues": "Common cookie issues",
+		"commonIssuesDescription": "Common cookie problems include: SameSite=None without Secure flag (won't work in modern browsers), domain mismatches, expired cookies, missing HttpOnly for session cookies, and incorrect SameSite settings for cross-site requests.",
+		"privacy": "Privacy",
+		"privacyText": "All parsing and simulation runs locally in your browser. No data is sent to any server."
 	},
 	"privacy": {
 		"title": "Privacy - QA Toolbox",
