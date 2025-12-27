@@ -15,6 +15,8 @@
 	import { CircleCheckBig, CircleX, AlertTriangle, Copy, Download, RefreshCw, Play, Loader2 } from 'lucide-svelte';
 
 	const lang = $derived(($page.params.lang || 'en') as Locale);
+	const baseUrl = 'https://qatools.dataflowkit.dev';
+	const currentUrl = $derived(`${baseUrl}/${lang}/api-response-validator`);
 
 	let payloadText = $state('');
 	let schemaText = $state('');
@@ -172,6 +174,32 @@
 <svelte:head>
 	<title>{tStringReactive('apiResponseValidator.title', $locale)}</title>
 	<meta name="description" content={tStringReactive('apiResponseValidator.description', $locale)} />
+	<meta property="og:title" content={tStringReactive('apiResponseValidator.title', $locale)} />
+	<meta property="og:description" content={tStringReactive('apiResponseValidator.description', $locale)} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={currentUrl} />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content={tStringReactive('apiResponseValidator.title', $locale)} />
+	<meta name="twitter:description" content={tStringReactive('apiResponseValidator.description', $locale)} />
+	<link rel="canonical" href={currentUrl} />
+	{@html `
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "SoftwareApplication",
+			"name": "API Response Validator",
+			"description": "${tStringReactive('apiResponseValidator.description', $locale)}",
+			"url": "${currentUrl}",
+			"applicationCategory": "DeveloperApplication",
+			"operatingSystem": "Web Browser",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			}
+		}
+		</script>
+	`}
 </svelte:head>
 
 <div class="max-w-7xl mx-auto px-4 py-4 sm:py-8">

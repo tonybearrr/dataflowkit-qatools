@@ -14,6 +14,8 @@
 	import { BookOpen } from 'lucide-svelte';
 
 	const lang = $derived(($page.params.lang || 'en') as Locale);
+	const baseUrl = 'https://qatools.dataflowkit.dev';
+	const currentUrl = $derived(`${baseUrl}/${lang}/status-code-reference`);
 
 	let searchQuery = $state('');
 	let category = $state('all');
@@ -71,8 +73,34 @@
 </script>
 
 <svelte:head>
-		<title>{tStringReactive('statusCodeReference.title', lang)}</title>
-		<meta name="description" content={tStringReactive('statusCodeReference.description', lang)} />
+	<title>{tStringReactive('statusCodeReference.title', lang)}</title>
+	<meta name="description" content={tStringReactive('statusCodeReference.description', lang)} />
+	<meta property="og:title" content={tStringReactive('statusCodeReference.title', lang)} />
+	<meta property="og:description" content={tStringReactive('statusCodeReference.description', lang)} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={currentUrl} />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content={tStringReactive('statusCodeReference.title', lang)} />
+	<meta name="twitter:description" content={tStringReactive('statusCodeReference.description', lang)} />
+	<link rel="canonical" href={currentUrl} />
+	{@html `
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "SoftwareApplication",
+			"name": "Status Code Reference",
+			"description": "${tStringReactive('statusCodeReference.description', lang)}",
+			"url": "${currentUrl}",
+			"applicationCategory": "DeveloperApplication",
+			"operatingSystem": "Web Browser",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			}
+		}
+		</script>
+	`}
 </svelte:head>
 
 <div class="max-w-7xl mx-auto px-4 py-4 sm:py-8">

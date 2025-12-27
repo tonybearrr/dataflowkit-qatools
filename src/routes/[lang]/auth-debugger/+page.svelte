@@ -16,6 +16,8 @@
 	import { Copy, RefreshCw, Play, Shield } from 'lucide-svelte';
 
 	const lang = $derived(($page.params.lang || 'en') as Locale);
+	const baseUrl = 'https://qatools.dataflowkit.dev';
+	const currentUrl = $derived(`${baseUrl}/${lang}/auth-debugger`);
 
 	let rawInput = $state('');
 	let mode = $state<'request' | 'response' | 'combined'>('combined');
@@ -208,6 +210,32 @@
 <svelte:head>
 	<title>{tStringReactive('authDebugger.title', lang)}</title>
 	<meta name="description" content={tStringReactive('authDebugger.description', lang)} />
+	<meta property="og:title" content={tStringReactive('authDebugger.title', lang)} />
+	<meta property="og:description" content={tStringReactive('authDebugger.description', lang)} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={currentUrl} />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content={tStringReactive('authDebugger.title', lang)} />
+	<meta name="twitter:description" content={tStringReactive('authDebugger.description', lang)} />
+	<link rel="canonical" href={currentUrl} />
+	{@html `
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "SoftwareApplication",
+			"name": "Auth Debugger",
+			"description": "${tStringReactive('authDebugger.description', lang)}",
+			"url": "${currentUrl}",
+			"applicationCategory": "DeveloperApplication",
+			"operatingSystem": "Web Browser",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			}
+		}
+		</script>
+	`}
 </svelte:head>
 
 <div class="max-w-7xl mx-auto px-4 py-8">

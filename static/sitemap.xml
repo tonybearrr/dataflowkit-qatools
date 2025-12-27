@@ -91,21 +91,6 @@
 		<priority>0.8</priority>
 	</url>
 	<url>
-		<loc>https://qatools.dataflowkit.dev/en/user-agent-parser</loc>
-		<changefreq>monthly</changefreq>
-		<priority>0.8</priority>
-	</url>
-	<url>
-		<loc>https://qatools.dataflowkit.dev/uk/user-agent-parser</loc>
-		<changefreq>monthly</changefreq>
-		<priority>0.8</priority>
-	</url>
-	<url>
-		<loc>https://qatools.dataflowkit.dev/ru/user-agent-parser</loc>
-		<changefreq>monthly</changefreq>
-		<priority>0.8</priority>
-	</url>
-	<url>
 		<loc>https://qatools.dataflowkit.dev/en/cookie-debugger</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
@@ -117,6 +102,21 @@
 	</url>
 	<url>
 		<loc>https://qatools.dataflowkit.dev/ru/cookie-debugger</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://qatools.dataflowkit.dev/en/auth-debugger</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://qatools.dataflowkit.dev/uk/auth-debugger</loc>
+		<changefreq>monthly</changefreq>
+		<priority>0.8</priority>
+	</url>
+	<url>
+		<loc>https://qatools.dataflowkit.dev/ru/auth-debugger</loc>
 		<changefreq>monthly</changefreq>
 		<priority>0.8</priority>
 	</url>

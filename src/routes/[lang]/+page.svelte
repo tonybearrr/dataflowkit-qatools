@@ -28,6 +28,38 @@
 		content={tStringReactive('home.description', $locale)}
 	/>
 	<link rel="canonical" href={currentUrl} />
+	{@html `
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "WebApplication",
+			"name": "QA Toolbox",
+			"description": "${tStringReactive('home.description', $locale)}",
+			"url": "${currentUrl}",
+			"applicationCategory": "DeveloperApplication",
+			"operatingSystem": "Web Browser",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			},
+			"creator": {
+				"@type": "Person",
+				"name": "Anton Bulavenko",
+				"url": "https://tonylab.dev"
+			},
+			"featureList": [
+				"Test Data Generator",
+				"Payload Builder + Breaker",
+				"API Response Validator",
+				"Status Code Reference",
+				"Headers Inspector",
+				"Cookie Debugger",
+				"Auth Debugger"
+			]
+		}
+		</script>
+	`}
 </svelte:head>
 
 <div class="max-w-6xl mx-auto px-4 py-8 sm:py-16">

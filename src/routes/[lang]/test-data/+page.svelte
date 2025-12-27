@@ -12,6 +12,8 @@
 	import { Database } from 'lucide-svelte';
 
 	const lang = $derived(($page.params.lang || 'en') as Locale);
+	const baseUrl = 'https://qatools.dataflowkit.dev';
+	const currentUrl = $derived(`${baseUrl}/${lang}/test-data`);
 
 	let schema = $state<FieldSchema[]>([]);
 	let config = $state<GeneratorConfig>({
@@ -92,6 +94,32 @@
 <svelte:head>
 	<title>{tStringReactive('testDataGenerator.title', $locale)}</title>
 	<meta name="description" content={tStringReactive('testDataGenerator.description', $locale)} />
+	<meta property="og:title" content={tStringReactive('testDataGenerator.title', $locale)} />
+	<meta property="og:description" content={tStringReactive('testDataGenerator.description', $locale)} />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content={currentUrl} />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content={tStringReactive('testDataGenerator.title', $locale)} />
+	<meta name="twitter:description" content={tStringReactive('testDataGenerator.description', $locale)} />
+	<link rel="canonical" href={currentUrl} />
+	{@html `
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "SoftwareApplication",
+			"name": "Test Data Generator",
+			"description": "${tStringReactive('testDataGenerator.description', $locale)}",
+			"url": "${currentUrl}",
+			"applicationCategory": "DeveloperApplication",
+			"operatingSystem": "Web Browser",
+			"offers": {
+				"@type": "Offer",
+				"price": "0",
+				"priceCurrency": "USD"
+			}
+		}
+		</script>
+	`}
 </svelte:head>
 
 <div class="max-w-7xl mx-auto px-4 py-4 sm:py-8">
