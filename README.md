@@ -1,46 +1,57 @@
 # QA Toolbox
 
-A collection of privacy-first QA testing tools that run locally in your browser. No backend. No tracking. Everything runs locally.
+> **Fast, privacy-first tools for QA testing. No backend. No tracking. Everything runs locally in your browser.**
 
-## Features
+A collection of essential QA testing utilities built with SvelteKit. All tools process data entirely in your browser — your data never leaves your device.
 
-- **Test Data Generator** - Generate test data: emails, phone numbers, UUIDs, names, addresses, and more
-- **API Response Validator** - Validate JSON responses against schemas
-- **Status Code Reference** - Quick reference for HTTP status codes
-- **User Agent Parser** - Parse User-Agent strings to extract browser, OS, device info
-- **Cookie Inspector** - Analyze and edit cookies
-- **Header Inspector** - Inspect HTTP headers
-- **Test Case Builder** - Build structured test cases
+**Live:** https://qatools.dataflowkit.dev
 
-## Tech Stack
+## 🧰 Tools
 
-- **Framework**: SvelteKit 2.49+ (Svelte 5)
-- **TypeScript**: 5.9+
-- **Styling**: Tailwind CSS 4.1+
-- **Icons**: lucide-svelte 0.562+
-- **Build**: Vite 7.2+
-- **Adapter**: @sveltejs/adapter-static 3.0+
-- **Testing**: Vitest 4.0+
+- **📊 Test Data Generator** — Generate test data: emails, phone numbers, UUIDs, names, addresses, and more
+- **🔧 Payload Builder + Breaker** — Build and break JSON payloads for API testing. Create invalid variants to test validation
+- **✅ API Response Validator** — Validate JSON responses against schemas. Check structure, types, and required fields
+- **📖 Status Code Reference** — Quick reference for HTTP status codes with descriptions and use cases
+- **📋 Headers Inspector** — Inspect HTTP headers, detect issues, and get recommendations for CORS, caching, and security
+- **🍪 Cookie Debugger** — Parse and debug cookies. Understand attributes, detect issues, and simulate cookie sending
+- **🔐 Auth Debugger** — Diagnose authentication and authorization issues (401/403) by analyzing HTTP headers, cookies, and JWT tokens
 
-## Development
+## ✨ Key Principles
+
+- Privacy-First
+- No Backend
+- No Tracking
+
+## 🛠️ Tech
+
+Built with **SvelteKit**, **TypeScript**, and **Tailwind CSS**.
+
+## 🧪 Development
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Build
+## 🔒 Privacy
 
-```bash
-npm run build
-```
+All processing happens locally in your browser.
 
-## Test
+- No data is sent to any server
+- No cookies, tracking, or analytics
+- Works offline after initial load
 
-```bash
-npm test
-```
+## 📝 License
 
-## License
+**MIT**
 
-MIT
+## 👤 Author
+
+Built and maintained by **[Anton Bulavenko](https://tonylab.dev)**
+
+## ☕ Support
+
+If you find this work useful, you can support independent open source software here:  
+[Support](https://send.monobank.ua/jar/ABUXaikGMB)
+
+---
